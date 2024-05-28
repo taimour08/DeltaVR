@@ -1,0 +1,109 @@
+fileFormatVersion: 2
+guid: f0660390544f7fe439816875004bdda8
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["Ground.100","Ground.099","Ground.098","Ground.097","Ground.096","Ground.095","Ground.094","Ground.093","Ground.092","Ground.091","Ground.090","Ground.089","Ground.088","Ground.087","Ground.086","Ground.085","Ground.084","Ground.083","Ground.082","Ground.081","Ground.080","Ground.079","Ground.078","Ground.077","Ground.076","Ground.075","Ground.074","Ground.073","Ground.072","Ground.071","Ground.070","Ground.069","Ground.068","Ground.067","Ground.066","Ground.065","Ground.064","Ground.063","Ground.062","Ground.061","Ground.060","Ground.059","Ground.058","Ground.057","Ground.055","Ground.054","Ground.053","Ground.052","Ground.051","Ground.050","Ground.049","Ground.048","Ground.047","Ground.046","Ground.045","Ground.044","Ground.043","Ground.042","Ground.041","Ground.040","Ground.039","Ground.038","Ground.037","Ground.036","Ground.035","Ground.034","Ground.033","Ground.032","Ground.031","Ground.030","Ground.029","Ground.028","Ground.027","Ground.026","Ground.025","Ground.024","Ground.023","Ground.022","Ground.021","Ground.020","Ground.019","Ground.018","Ground.016","Ground.015","Ground.014","Ground.013","Ground.011","Ground.010","Ground.009","Ground.008","Ground.007","Ground.006","Ground.005","Ground.004","Ground.003","Ground.002","Ground.001"],"padding":[1,1,2,1,5,4,2,5,2,13,7,2,5,3,15,11,15,2,4,6,5,15,3,6,2,1,241,216,60,17,17,17,17,17,17,17,75,74,74,74,74,5,7,1,1,1,92,6,2,5,5,1,2,9,7,2,7,6,3,4,4,2,5,12,1,1,1,6,6,3,1,10,4,2,1,5,2,2,1,1,1,1,5,13,3,9,5,10,2,1,1,1,1,1,4,2,5],"unwrapper":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]}'
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 0
+    bakeAxisConversion: 0
+    preserveHierarchy: 1
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 80
+    secondaryUVMinObjectScale: 100
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 0
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

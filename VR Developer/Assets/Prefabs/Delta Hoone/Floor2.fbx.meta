@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: 807549bf6f1d8d941a546cf8f32d8d5a
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 121603_Glass - Clear Fast
+    second: {fileID: 2100000, guid: c4ac4c1079d5722419c27313a6320578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 19692_Paint - Anthracite
+    second: {fileID: 2100000, guid: e1758f5440657e24e87e5e8054724e88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: c4ac4c1079d5722419c27313a6320578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hard_Wall
+    second: {fileID: 2100000, guid: 07b68a1228299d141848dc3ee7157ae7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Outer_wall
+    second: {fileID: 2100000, guid: 07b68a1228299d141848dc3ee7157ae7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paint - Anthracite
+    second: {fileID: 2100000, guid: e1758f5440657e24e87e5e8054724e88, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["Optional Flooring Style 1.032","Optional Flooring Style
+      1.031","Optional Flooring Style 1.030","Optional Flooring Style 1.029","Optional
+      Flooring Style 1.028","Optional Flooring Style 1.027","Optional Flooring Style
+      1.026","Optional Flooring Style 1.025","Optional Flooring Style 1.024","Optional
+      Flooring Style 1.023","Optional Flooring Style 1.022","Optional Flooring Style
+      1.021","Optional Flooring Style 1.020","Optional Flooring Style 1.019","Optional
+      Flooring Style 1.018","Optional Flooring Style 1.017","Optional Flooring Style
+      1.016","Optional Flooring Style 1.015","Optional Flooring Style 1.014","Optional
+      Flooring Style 1.013","Optional Flooring Style 1.012","Optional Flooring Style
+      1.011","Optional Flooring Style 1.010","Optional Flooring Style 1.009","Optional
+      Flooring Style 1.008","Optional Flooring Style 1.007","Optional Flooring Style
+      1.006","Optional Flooring Style 1.005","Optional Flooring Style 1.004","Optional
+      Flooring Style 1.003","Optional Flooring Style 1.002","Optional Flooring Style
+      1.001","Optional Flooring Style 1","IfcWallStandardCase/SW_-_027.006","IfcSlab/SLA_-_079.035","IfcSlab/SLA_-_079.034","IfcSlab/SLA_-_079.033","IfcSlab/SLA_-_079.032","IfcSlab/SLA_-_079.031","IfcSlab/SLA_-_079.030","IfcSlab/SLA_-_079.029","IfcSlab/SLA_-_079.028","IfcSlab/SLA_-_079.027","IfcSlab/SLA_-_079.026","IfcSlab/SLA_-_079.025","IfcSlab/SLA_-_079.024","IfcSlab/SLA_-_079.023","IfcSlab/SLA_-_079.022","IfcSlab/SLA_-_079.021","IfcSlab/SLA_-_079.020","IfcSlab/SLA_-_079.019","IfcSlab/SLA_-_079.018","IfcSlab/SLA_-_079.017","IfcSlab/SLA_-_079.016","IfcSlab/SLA_-_079.015","IfcSlab/SLA_-_079.014","IfcSlab/SLA_-_079.013","IfcSlab/SLA_-_079.012","IfcSlab/SLA_-_079.011","IfcSlab/SLA_-_079.010","IfcSlab/SLA_-_079.009","IfcSlab/SLA_-_079.008","IfcSlab/SLA_-_079.007","IfcSlab/SLA_-_079.006","IfcSlab/SLA_-_079.005","IfcSlab/SLA_-_079.004","IfcSlab/SLA_-_079.003","IfcSlab/SLA_-_079.001","IfcSlab/SLA_-_079","IfcSlab/EM-23.008","IfcPlate/Panel-Main-454.009","IfcPlate/Panel-Main-454.008","IfcPlate/Panel-Main-454.007","IfcPlate/Panel-Main-454.006","IfcPlate/Panel-Main-454.005","IfcPlate/Panel-Main-454.004","IfcMember/Frame-Trs-553","IfcMember/Frame-Trs-552","IfcMember/Frame-Trs-548","IfcMember/Frame-Trs-547","IfcMember/Frame-Mll-700.001","IfcMember/Frame-Mll-666","IfcMember/Frame-Mll-661","IfcMember/Frame-Bnd-672.001","IfcMember/Frame-Bnd-671.001","IfcMember/Frame-Bnd-670.001","IfcMember/Frame-Bnd-495.001","IfcMember/Frame-Bnd-471","IfcMember/Frame-Bnd-470","IfcMember/Frame-Bnd-467","IfcMember/Frame-Bnd-466","IfcColumn/CRE_-_009.231","IfcColumn/CRE_-_009.230","IfcColumn/CRE_-_009.229","IfcColumn/CRE_-_009.228","IfcColumn/CRE_-_009.227","IfcColumn/CRE_-_009.226","IfcColumn/CRE_-_009.225","IfcColumn/CRE_-_009.224","IfcColumn/CRE_-_009.223","IfcColumn/CRE_-_009.222","IfcColumn/CRE_-_009.221","IfcColumn/CRE_-_009.220","IfcColumn/CRE_-_009.219","IfcColumn/CRE_-_009.218","IfcColumn/CRE_-_009.217","IfcColumn/CRE_-_009.216","IfcColumn/CRE_-_009.215","IfcColumn/CRE_-_009.214","IfcColumn/CRE_-_009.213","IfcColumn/CRE_-_009.206","IfcColumn/CRE_-_009.205","IfcColumn/CRE_-_009.204","IfcColumn/CRE_-_009.203","IfcColumn/CRE_-_009.202","IfcColumn/CRE_-_009.201","IfcColumn/CRE_-_009.200","IfcColumn/CRE_-_009.199","IfcColumn/CRE_-_009.198","IfcColumn/CRE_-_009.197","IfcColumn/CRE_-_009.196","IfcColumn/CRE_-_009.195","IfcColumn/CRE_-_009.194","IfcColumn/CRE_-_009.193","IfcColumn/CRE_-_009.192","IfcColumn/CRE_-_009.191","IfcColumn/CRE_-_009.190","IfcColumn/CRE_-_009.189","IfcColumn/CRE_-_009.188","IfcColumn/CRE_-_009.187","IfcColumn/CRE_-_009.186","IfcColumn/CRE_-_009.185","IfcColumn/CRE_-_009.184","IfcColumn/CRE_-_009.183","IfcColumn/CRE_-_009.182","IfcColumn/CRE_-_009.181","IfcColumn/CRE_-_009.180","IfcColumn/CRE_-_009.179","IfcColumn/CRE_-_009.178","IfcColumn/CRE_-_009.177","IfcColumn/CRE_-_009.176","IfcColumn/CRE_-_009.175","IfcColumn/CRE_-_009.174","IfcColumn/CRE_-_009.173","IfcColumn/CRE_-_009.172","IfcColumn/CRE_-_009.171","IfcColumn/CRE_-_009.170","IfcColumn/CRE_-_009.169","IfcColumn/CRE_-_009.168","IfcColumn/CRE_-_009.167","IfcColumn/CRE_-_009.166","IfcColumn/CRE_-_009.165","IfcColumn/CRE_-_009.164","IfcColumn/CRE_-_009.163","IfcColumn/CRE_-_009.162","IfcColumn/CRE_-_009.161","IfcColumn/CRE_-_009.160","IfcColumn/CRE_-_009.159","IfcColumn/CRE_-_009.158","IfcColumn/CRE_-_009.157","IfcColumn/CRE_-_009.156","IfcColumn/CRE_-_009.155","IfcColumn/CRE_-_009.154","IfcColumn/CRE_-_009.153","IfcColumn/CRE_-_009.152","IfcColumn/CRE_-_009.151","IfcColumn/CRE_-_009.150","IfcColumn/CRE_-_009.149","IfcColumn/CRE_-_009.148","IfcColumn/CRE_-_009.147","IfcColumn/CRE_-_009.146","IfcColumn/CRE_-_009.145","IfcColumn/CRE_-_009.144","IfcColumn/CRE_-_009.143","IfcColumn/CRE_-_009.142","IfcColumn/CRE_-_009.141","IfcColumn/CRE_-_009.140","IfcColumn/CRE_-_009.139","IfcColumn/CRE_-_009.138","IfcColumn/CRE_-_009.137","IfcColumn/CRE_-_009.136","IfcColumn/CRE_-_009.135","IfcColumn/CRE_-_009.134","IfcColumn/CRE_-_009.133","IfcColumn/CRE_-_009.132","IfcColumn/CRE_-_009.131","IfcColumn/CRE_-_009.130","IfcColumn/CRE_-_009.129","IfcColumn/CRE_-_009.128","IfcColumn/CRE_-_009.127","IfcColumn/CRE_-_009.126","IfcColumn/CRE_-_009.125","IfcColumn/CRE_-_009.124","IfcColumn/CRE_-_009.123","IfcColumn/CRE_-_009.122","IfcColumn/CRE_-_009.121","IfcColumn/CRE_-_009.120","IfcColumn/CRE_-_009.119","IfcColumn/CRE_-_009.118","IfcColumn/CRE_-_009.117","IfcColumn/CRE_-_009.116","IfcColumn/CRE_-_009.115","IfcColumn/CRE_-_009.114","IfcColumn/CRE_-_009.113","IfcColumn/CRE_-_009.112","IfcColumn/CRE_-_009.111","IfcColumn/CRE_-_009.110","IfcColumn/CRE_-_009.109","IfcColumn/CRE_-_009.108","IfcColumn/CRE_-_009.107","IfcColumn/CRE_-_009.106","IfcColumn/CRE_-_009.105","IfcColumn/CRE_-_009.104","IfcColumn/CRE_-_009.103","IfcColumn/CRE_-_009.102","IfcColumn/CRE_-_009.101","IfcColumn/CRE_-_009.100","IfcColumn/CRE_-_009.099","IfcColumn/CRE_-_009.098","IfcColumn/CRE_-_009.097","IfcColumn/CRE_-_009.096","IfcColumn/CRE_-_009.095","IfcColumn/CRE_-_009.094","IfcColumn/CRE_-_009.093","IfcColumn/CRE_-_009.092","IfcColumn/CRE_-_009.091","IfcColumn/CRE_-_009.090","IfcColumn/CRE_-_009.089","IfcColumn/CRE_-_009.088","IfcColumn/CRE_-_009.087","IfcColumn/CRE_-_009.086","IfcColumn/CRE_-_009.085","IfcColumn/CRE_-_009.084","IfcColumn/CRE_-_009.083","IfcColumn/CRE_-_009.082","IfcColumn/CRE_-_009.081","IfcColumn/CRE_-_009.080","IfcColumn/CRE_-_009.079","IfcColumn/CRE_-_009.078","IfcColumn/CRE_-_009.077","IfcColumn/CRE_-_009.076","IfcColumn/CRE_-_009.075","IfcColumn/CRE_-_009.074","IfcColumn/CRE_-_009.073","IfcColumn/CRE_-_009.072","IfcColumn/CRE_-_009.071","IfcColumn/CRE_-_009.070","IfcColumn/CRE_-_009.069","IfcColumn/CRE_-_009.068","IfcColumn/CRE_-_009.067","IfcColumn/CRE_-_009.066","IfcColumn/CRE_-_009.065","IfcColumn/CRE_-_009.064","IfcColumn/CRE_-_009.063","IfcColumn/CRE_-_009.062","IfcColumn/CRE_-_009.061","IfcColumn/CRE_-_009.060","IfcColumn/CRE_-_009.059","IfcColumn/CRE_-_009.058","IfcColumn/CRE_-_009.057","IfcColumn/CRE_-_009.056","IfcColumn/CRE_-_009.055","IfcColumn/CRE_-_009.054","IfcColumn/CRE_-_009.053","IfcColumn/CRE_-_009.052","IfcColumn/CRE_-_009.051","IfcColumn/CRE_-_009.050","IfcColumn/CRE_-_009.049","IfcColumn/CRE_-_009.048","IfcColumn/CRE_-_009.047","IfcColumn/CRE_-_009.046","IfcColumn/CRE_-_009.045","IfcColumn/CRE_-_009.044","IfcColumn/CRE_-_009.043","IfcColumn/CRE_-_009.042","IfcColumn/CRE_-_009.041","IfcColumn/CRE_-_009.040","IfcColumn/CRE_-_009.039","IfcColumn/CRE_-_009.038","IfcColumn/CRE_-_009.037","IfcColumn/CRE_-_009.036","IfcColumn/CRE_-_009.035","IfcColumn/CRE_-_009.034","IfcColumn/CRE_-_009.033","IfcColumn/CRE_-_009.032","IfcColumn/CRE_-_009.031","IfcColumn/CRE_-_009.030","IfcColumn/CRE_-_009.029","IfcColumn/CRE_-_009.028","IfcColumn/CRE_-_009.027","IfcColumn/CRE_-_009.026","IfcColumn/CRE_-_009.025","IfcColumn/CRE_-_009.024","IfcColumn/CRE_-_009.023","IfcColumn/CRE_-_009.022","IfcColumn/CRE_-_009.021","IfcColumn/CRE_-_009.020","IfcColumn/CRE_-_009.019","IfcColumn/CRE_-_009.018","IfcColumn/CRE_-_009.017","IfcColumn/CRE_-_009.016","IfcColumn/CRE_-_009.015","IfcColumn/CRE_-_009.014","IfcColumn/CRE_-_009.013","IfcColumn/CRE_-_009.012","IfcColumn/CRE_-_009.011","IfcColumn/CRE_-_009.010","IfcColumn/CRE_-_009.009","IfcColumn/CRE_-_009.008","IfcColumn/CRE_-_009.007","IfcColumn/CRE_-_009.006","IfcColumn/CRE_-_009.005","IfcColumn/CRE_-_009.004","IfcColumn/CRE_-_009.003","IfcColumn/CRE_-_009.002","IfcColumn/CRE_-_009.001","IfcColumn/CRE_-_009","Floor
+      2.009","Floor 2.008","Floor 2.007","Floor 2.006","Floor 2.005","Floor 2.004","Floor
+      2.003","Floor 2.002","Floor 2.001","Floor 2 optional_flooring001.001","Floor
+      2 optional_flooring001","Floor 2 - wall.053","Floor 2 - wall.052","Floor 2
+      - wall.051","Floor 2 - wall.050","Floor 2 - wall.049","Floor 2 - wall.048","Floor
+      2 - wall.047","Floor 2 - wall.046","Floor 2 - wall.045","Floor 2 - wall.044","Floor
+      2 - wall.043","Floor 2 - wall.042","Floor 2 - wall.041","Floor 2 - wall.040","Floor
+      2 - wall.039","Floor 2 - wall.038","Floor 2 - wall.037","Floor 2 - wall.036","Floor
+      2 - wall.035","Floor 2 - wall.034","Floor 2 - wall.033","Floor 2 - wall.032","Floor
+      2 - wall.031","Floor 2 - wall.030","Floor 2 - wall.029","Floor 2 - wall.028","Floor
+      2 - wall.027","Floor 2 - wall.026","Floor 2 - wall.025","Floor 2 - wall.024","Floor
+      2 - wall.023","Floor 2 - wall.022","Floor 2 - wall.021","Floor 2 - wall.020","Floor
+      2 - wall.019","Floor 2 - wall.018","Floor 2 - wall.017","Floor 2 - wall.016","Floor
+      2 - wall.015","Floor 2 - wall.014","Floor 2 - wall.013","Floor 2 - wall.012","Floor
+      2 - wall.011","Floor 2 - wall.010","Floor 2 - wall.009","Floor 2 - wall.008","Floor
+      2 - wall.007","Floor 2 - wall.006","Floor 2 - wall.005","Floor 2 - wall.004","Floor
+      2 - wall.003","Floor 2 - wall.002","Floor 2 - wall.001","Floor 2 - wall","Floor
+      2 - Rim.008","Floor 2 - Rim.007","Floor 2 - Rim.006","Floor 2 - Rim.005","Floor
+      2 - Rim.004","Floor 2 - Rim.003","Floor 2 - Rim.002","Floor 2 - Rim.001","Floor
+      2 - Rim","Floor 2 - outer wall.020","Floor 2 - outer wall.019","Floor 2 - outer
+      wall.018","Floor 2 - outer wall.017","Floor 2 - outer wall.016","Floor 2 -
+      outer wall.015","Floor 2 - outer wall.014","Floor 2 - outer wall.013","Floor
+      2 - outer wall.012","Floor 2 - outer wall.011","Floor 2 - outer wall.010","Floor
+      2 - outer wall.009","Floor 2 - outer wall.008","Floor 2 - outer wall.007","Floor
+      2 - outer wall.006","Floor 2 - outer wall.005","Floor 2 - outer wall.004","Floor
+      2 - outer wall.003","Floor 2 - outer wall.002","Floor 2 - outer wall.001","Floor
+      2 - outer wall","Floor 2 - optional flooring3.002","Floor 2 - optional flooring3.001","Floor
+      2 - optional flooring3","Floor 2 - hard wall.010","Floor 2 - hard wall.009","Floor
+      2 - hard wall.008","Floor 2 - hard wall.007","Floor 2 - hard wall.006","Floor
+      2 - hard wall.005","Floor 2 - hard wall.004","Floor 2 - hard wall.003","Floor
+      2 - hard wall.002","Floor 2 - hard wall.001","Floor 2 - hard wall","Floor 2"],"padding":[9,10,1,2,2,2,1,2,4,2,3,2,3,3,3,2,2,2,3,2,1,1,2,5,5,5,5,5,5,5,5,5,5,5,1,24,41,41,24,41,24,24,41,41,22,24,40,41,22,41,41,22,22,41,41,41,22,41,22,41,41,24,41,31,41,31,3,5,1,10,28,28,43,43,28,28,70,70,70,70,57,87,57,58,67,67,58,57,87,87,57,69,68,68,68,68,68,68,68,138,88,74,68,73,73,67,65,65,74,67,81,82,74,81,81,81,81,65,81,81,81,81,81,81,74,75,75,65,74,75,82,75,75,88,75,88,88,87,86,85,85,65,65,85,85,67,85,85,85,67,81,81,81,81,81,81,81,82,81,82,83,82,82,82,83,70,83,82,82,82,82,82,70,82,82,70,82,82,82,81,82,82,82,82,81,82,82,82,81,80,65,65,82,65,82,81,82,82,81,81,65,81,65,81,65,82,81,65,81,82,81,82,65,82,82,82,65,82,82,65,82,83,82,83,83,76,76,76,76,75,75,75,65,74,74,75,75,75,74,74,65,75,65,75,75,65,65,74,74,74,65,74,74,74,74,74,74,74,73,65,75,75,74,75,74,75,74,73,75,65,65,75,75,75,74,74,65,65,75,75,65,65,75,74,74,74,74,74,74,65,66,66,65,81,81,81,81,82,66,65,81,66,82,81,81,81,65,82,82,82,82,65,72,81,72,81,80,1,1,1,1,1,1,1,1,1,4,6,1,2,2,4,2,2,2,2,2,3,2,2,2,2,2,2,2,1,2,2,2,1,3,3,3,2,2,2,2,5,2,3,12,4,9,24,18,4,3,2,1,1,2,3,5,2,2,2,1,1,2,2,2,2,5,1,1,2,1,1,1,1,4,1,1,3,3,1,2,1,13,8,2,6,8,1,3,4,1,4,4,7,10,1,4,2,3,2,4,2,6,6,3,2,6,7,2,2,20],"unwrapper":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]}'
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 0
+    bakeAxisConversion: 0
+    preserveHierarchy: 1
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 80
+    secondaryUVMinObjectScale: 100
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 0
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

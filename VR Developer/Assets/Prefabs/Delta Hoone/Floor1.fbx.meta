@@ -1,0 +1,188 @@
+fileFormatVersion: 2
+guid: 05170844669deab4fbd5041e4a89620b
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: c4ac4c1079d5722419c27313a6320578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hard_Wall
+    second: {fileID: 2100000, guid: 07b68a1228299d141848dc3ee7157ae7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Outer_wall
+    second: {fileID: 2100000, guid: 07b68a1228299d141848dc3ee7157ae7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stairs
+    second: {fileID: 2100000, guid: 844a9f4d9df866c43b92dab75a874a57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall
+    second: {fileID: 2100000, guid: becaae37bb6745a4893be11103d394f3, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["Stairs.010","Stairs.009","Stairs.008","Stairs.007","Stairs.006","Stairs.005","Stairs.004","Stairs.003","Stairs.002","Stairs.001","Stairs","Outer
+      Wall.090","Outer Wall.089","Outer Wall.088","Outer Wall.087","Outer Wall.086","Outer
+      Wall.085","Outer Wall.084","Outer Wall.083","Outer Wall.082","Outer Wall.081","Outer
+      Wall.079","Outer Wall.078","Outer Wall.077","Outer Wall.076","Outer Wall.075","Outer
+      Wall.074","Outer Wall.073","Outer Wall.072","Outer Wall.071","Outer Wall.070","Outer
+      Wall.069","Outer Wall.068","Outer Wall.067","Outer Wall.066","Outer Wall.065","Outer
+      Wall.064","Outer Wall.063","Outer Wall.062","Outer Wall.061","Outer Wall.060","Outer
+      Wall.059","Outer Wall.058","Outer Wall.057","Outer Wall.056","Outer Wall.055","Outer
+      Wall.054","Outer Wall.053","Outer Wall.052","Outer Wall.051","Outer Wall.050","Outer
+      Wall.049","Outer Wall.048","Outer Wall.047","Outer Wall.046","Outer Wall.045","Outer
+      Wall.044","Outer Wall.043","Outer Wall.042","Outer Wall.041","Outer Wall.040","Outer
+      Wall.039","Outer Wall.038","Outer Wall.037","Outer Wall.036","Outer Wall.035","Outer
+      Wall.034","Outer Wall.033","Outer Wall.032","Outer Wall.031","Outer Wall.030","Outer
+      Wall.029","Outer Wall.028","Outer Wall.026","Outer Wall.025","Outer Wall.024","Outer
+      Wall.023","Outer Wall.022","Outer Wall.021","Outer Wall.020","Outer Wall.019","Outer
+      Wall.018","Outer Wall.017","Outer Wall.016","Outer Wall.015","Outer Wall.014","Outer
+      Wall.013","Outer Wall.012","Outer Wall.011","Outer Wall.010","Outer Wall.009","Outer
+      Wall.008","Outer Wall.007","Outer Wall.005","Outer Wall.004","Outer Wall.003","Outer
+      Wall.002","Outer Wall.001","Outer Wall","Internal_Walls.031","Internal_Walls.030","Internal_Walls.029","Internal_Walls.028","Internal_Walls.027","Internal_Walls.026","Internal_Walls.025","Internal_Walls.024","Internal_Walls.023","Internal_Walls.022","Internal_Walls.021","Internal_Walls.020","Internal_Walls.019","Internal_Walls.018","Internal_Walls.017","Internal_Walls.016","Internal_Walls.015","Internal_Walls.014","Internal_Walls.013","Internal_Walls.012","Internal_Walls.011","Internal_Walls.010","Internal_Walls.009","Internal_Walls.008","Internal_Walls.007","Internal_Walls.006","Internal_Walls.005","Internal_Walls.004","Internal_Walls.003","Internal_Walls.002","Internal_Walls.001","Internal_Walls","Hard
+      Wall.182","Hard Wall.181","Hard Wall.180","Hard Wall.179","Hard Wall.178","Hard
+      Wall.177","Hard Wall.176","Hard Wall.175","Hard Wall.174","Hard Wall.173","Hard
+      Wall.172","Hard Wall.171","Hard Wall.170","Hard Wall.169","Hard Wall.168","Hard
+      Wall.167","Hard Wall.166","Hard Wall.165","Hard Wall.164","Hard Wall.163","Hard
+      Wall.162","Hard Wall.161","Hard Wall.160","Hard Wall.159","Hard Wall.158","Hard
+      Wall.157","Hard Wall.156","Hard Wall.155","Hard Wall.154","Hard Wall.153","Hard
+      Wall.152","Hard Wall.151","Hard Wall.150","Hard Wall.149","Hard Wall.148","Hard
+      Wall.147","Hard Wall.146","Hard Wall.145","Hard Wall.144","Hard Wall.143","Hard
+      Wall.142","Hard Wall.141","Hard Wall.140","Hard Wall.139","Hard Wall.138","Hard
+      Wall.137","Hard Wall.136","Hard Wall.135","Hard Wall.134","Hard Wall.133","Hard
+      Wall.132","Hard Wall.131","Hard Wall.130","Hard Wall.129","Hard Wall.128","Hard
+      Wall.127","Hard Wall.126","Hard Wall.125","Hard Wall.124","Hard Wall.123","Hard
+      Wall.122","Hard Wall.121","Hard Wall.120","Hard Wall.119","Hard Wall.118","Hard
+      Wall.117","Hard Wall.116","Hard Wall.115","Hard Wall.114","Hard Wall.113","Hard
+      Wall.112","Hard Wall.111","Hard Wall.110","Hard Wall.109","Hard Wall.108","Hard
+      Wall.107","Hard Wall.106","Hard Wall.105","Hard Wall.104","Hard Wall.103","Hard
+      Wall.102","Hard Wall.101","Hard Wall.100","Hard Wall.099","Hard Wall.098","Hard
+      Wall.097","Hard Wall.096","Hard Wall.095","Hard Wall.094","Hard Wall.092","Hard
+      Wall.091","Hard Wall.090","Hard Wall.089","Hard Wall.088","Hard Wall.087","Hard
+      Wall.086","Hard Wall.085","Hard Wall.083","Hard Wall.082","Hard Wall.081","Hard
+      Wall.080","Hard Wall.079","Hard Wall.078","Hard Wall.077","Hard Wall.076","Hard
+      Wall.075","Hard Wall.074","Hard Wall.073","Hard Wall.072","Hard Wall.070","Hard
+      Wall.069","Hard Wall.068","Hard Wall.067","Hard Wall.066","Hard Wall.065","Hard
+      Wall.064","Hard Wall.063","Hard Wall.062","Hard Wall.061","Hard Wall.060","Hard
+      Wall.059","Floor Main.003","Floor Main.002","Floor Main.001","Floor Main","Floor
+      1 - Light Grey","Floor 1 -  Paint Dark Gray","Delta Front Name","Brown Floor.048","Brown
+      Floor.047","Brown Floor.046","Brown Floor.045","Brown Floor.044","Brown Floor.043","Brown
+      Floor.042","Brown Floor.041","Brown Floor.040","Brown Floor.039","Brown Floor.038","Brown
+      Floor.037","Brown Floor.036","Brown Floor.035","Brown Floor.034","Brown Floor.033","Brown
+      Floor.032","Brown Floor.031","Brown Floor.030","Brown Floor.029","Brown Floor.028","Brown
+      Floor.027","Brown Floor.026","Brown Floor.025","Brown Floor.024","Brown Floor.023","Brown
+      Floor.022","Brown Floor.021","Brown Floor.020","Brown Floor.019","Brown Floor.017","Brown
+      Floor.016","Brown Floor.015","Brown Floor.014","Brown Floor.013","Brown Floor.012","Brown
+      Floor.011","Brown Floor.010","Brown Floor.009","Brown Floor.008","Brown Floor.007","Brown
+      Floor.006","Brown Floor.005","Brown Floor.004","Brown Floor.003","Brown Floor.002","Brown
+      Floor.001","Brown Floor"],"padding":[9,8,8,4,3,3,3,8,4,8,10,4,256,256,20,125,205,182,256,256,211,256,144,256,27,18,16,19,10,18,14,17,8,4,4,6,4,4,4,4,4,16,9,4,2,12,4,4,3,4,3,10,4,11,2,6,3,6,5,19,3,3,3,12,13,6,6,15,14,9,6,20,13,8,5,21,3,6,12,5,3,15,6,16,6,15,4,19,16,34,23,35,11,6,8,5,3,4,5,25,1,4,4,4,2,10,6,29,6,16,7,26,21,32,31,31,34,4,5,1,33,7,6,5,4,3,5,1,1,1,1,128,109,96,87,80,75,70,66,64,64,64,63,63,63,64,63,63,63,63,64,64,64,64,64,63,63,63,63,163,128,109,96,87,80,75,70,66,64,64,64,63,63,63,64,63,63,63,63,64,64,64,64,64,63,163,64,66,68,159,70,72,74,77,80,83,87,91,95,101,108,116,126,140,68,66,66,66,66,66,66,66,66,66,66,66,66,66,66,5,2,2,5,5,3,4,4,3,6,4,6,4,6,3,4,3,4,4,5,2,8,7,7,4,6,6,6,5,6,7,12,12,1,1,1,1,8,28,30,25,7,2,3,3,2,22,22,3,2,4,22,3,2,4,22,2,22,3,4,2,4,6,5,6,27,4,4,25,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,2,5,24],"unwrapper":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]}'
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 0
+    bakeAxisConversion: 0
+    preserveHierarchy: 1
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 80
+    secondaryUVMinObjectScale: 100
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 0
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
