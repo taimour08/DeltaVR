@@ -1,17 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.Networking;
 
 public class GetMethodWeather : MonoBehaviour
 {
-    InputField outputArea;
+    TMP_InputField outputArea;
 
     // Start is a Unity method called when the script starts running
     void Start()
     {
         // Find and get the UI InputField component named "OutputArea"
-        outputArea = GameObject.Find("OutputArea").GetComponent<InputField>();
+        outputArea = GameObject.Find("OutputArea").GetComponent<TMP_InputField>();
         // Find the UI Button component named "GetButton" and add a listener for the click event to call the GetData method
         GameObject.Find("GetButton").GetComponent<Button>().onClick.AddListener(GetData);
     }
