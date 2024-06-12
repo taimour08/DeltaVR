@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 public class GetMethodBD: MonoBehaviour
 {
@@ -28,7 +31,7 @@ public class GetMethodBD: MonoBehaviour
 
         // Define the URI for the HTTP GET request
        // string uri = "https://api.openweathermap.org/data/2.5/weather?q=Tartu&appid=fc2dd765b55ad13fd78e622ee10ebf97";
-        string uri = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20time%20%3E%3D%20%272024-01-01%27%20AND%20time%20%3C%3D%20%272024-01-02%27";
+        string uri = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20time%20%3E%3D%20%272024-01-01%27%20AND%20time%20%3C%3D%20%272024-01-02%27";
 
         // Set plain text HTTP connection option
        // UnityWebRequest.allowPlainHttp = UnityWebRequest.PlainHttp.Launch;
@@ -45,9 +48,23 @@ public class GetMethodBD: MonoBehaviour
                 outputArea.text = request.error;
             else {
                 // Display the downloaded text in the UI text field
-                 //request.downloadHandler.text;   accepts string
-                string jsonAsText = request.downloadHandler.text;
-                outputArea.text = jsonAsText;
+                //request.downloadHandler.text;   accepts string
+        
+                  string jsonAsText = request.downloadHandler.text;
+                  string pattern = @"\d+\.\d+";      // Regular expression to match floating point numbers
+        
+        // Find all matches in the string
+        MatchCollection matches = Regex.Matches(jsonAsText, pattern);
+
+        // Convert matches to a list of doubles
+        var values = matches.Cast<Match>().Select(m => double.Parse(m.Value)).ToList();
+
+        // Find the maximum value
+        double maxValue = values.Max();
+
+        string unit = "Energy: ";
+
+        outputArea.text = unit + maxValue;
             }
                 // Start if 
 
