@@ -27,8 +27,8 @@ public class GetMethodBD: MonoBehaviour
         outputArea.text = "Loading...";
 
         // Define the URI for the HTTP GET request
-        //string uri = "https://api.openweathermap.org/data/2.5/weather?q=Tartu&appid=fc2dd765b55ad13fd78e622ee10ebf97";
-        string uri = "http://username:password@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20time%20%3E%3D%20%272024-01-01%27%20AND%20time%20%3C%3D%20%272024-01-02%27";
+        string uri = "https://api.openweathermap.org/data/2.5/weather?q=Tartu&appid=fc2dd765b55ad13fd78e622ee10ebf97";
+        //string uri = "http://username:password@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20time%20%3E%3D%20%272024-01-01%27%20AND%20time%20%3C%3D%20%272024-01-02%27";
 
         // Set plain text HTTP connection option
        // UnityWebRequest.allowPlainHttp = UnityWebRequest.PlainHttp.Launch;
@@ -45,7 +45,17 @@ public class GetMethodBD: MonoBehaviour
                 outputArea.text = request.error;
             else
                 // Display the downloaded text in the UI text field
-                outputArea.text = request.downloadHandler.text;
+                outputArea.text = "Can you see"; //request.downloadHandler.text;   accepts string
+                //string jsonAsText = request.downloadHandler.text;
+
+                // Start if 
+
+                // extract Num & Unit, put into var.
+
+                // End if 
+                
+                //outputArea.text = Unit + Numerical;
+                
         }
     }
 }

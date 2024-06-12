@@ -12,7 +12,7 @@ class Program
         
         if (numericalValue.Length > 0)
         {
-            Console.WriteLine("Extracted numerical values: " + numericalValue);
+           // Console.WriteLine("Extracted numerical values: " + numericalValue);
         }
         else
         {
