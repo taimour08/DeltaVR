@@ -39,7 +39,7 @@ public class GetMethodBD: MonoBehaviour
     }
 
     // Coroutine for handling data retrieval asynchronously
-    IEnumerator GetData_Coroutine()
+    IEnumerator GetData_Coroutine() // so the game doesn't freeze 
     {
         // Display "Loading..." in the UI text field
         outputArea.text = "Loading...";
@@ -48,13 +48,22 @@ public class GetMethodBD: MonoBehaviour
 
         // Define the URI for the HTTP GET request
         string uri1 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
+        string uri2 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
+        string uri3 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
 
-        
+
+        UnityWebRequest[] requests = new UnityWebRequest[]
+        {
+            UnityWebRequest.Get(uri1),
+            UnityWebRequest.Get(uri2),
+            UnityWebRequest.Get(uri3)
+        };
+
         // Create a UnityWebRequest for the specified URI
-        using (UnityWebRequest request = UnityWebRequest.Get(uri1))
+        using (UnityWebRequest request = UnityWebRequest.Get(uri1)) // build the request
         {
             // Send the request and wait for a response
-            yield return request.SendWebRequest();
+            yield return request.SendWebRequest();  
 
             // Check if there's a network or HTTP error
             if (request.isNetworkError || request.isHttpError)
