@@ -11,7 +11,7 @@ public class GetMethodBD: MonoBehaviour
 {
     TMP_InputField outputArea;
     TMP_InputField outputArea2;
-    TMP_InputField outputArea2;
+    TMP_InputField outputArea3;
 
     // Start is a Unity method called when the script starts running
     void Start()
@@ -47,7 +47,7 @@ public class GetMethodBD: MonoBehaviour
 
 
         // Define the URI for the HTTP GET request
-        string uri1 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
+        string uri1 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
 
         
         // Create a UnityWebRequest for the specified URI
@@ -66,21 +66,28 @@ public class GetMethodBD: MonoBehaviour
             {
                 // Display the downloaded text in the UI text field
                 string jsonAsText = request.downloadHandler.text;
-                string pattern = @"\d+\.\d+"; // Regular expression to match floating point numbers
+                // Regular expression to match the last floating point number after all alphabets
+                string pattern = @"(?<=\D|^)\d+\.\d+(?!.*\d+\.\d+)";
+                
+                // Match the pattern in the JSON text
+                Match match = Regex.Match(jsonAsText, pattern);
+                
+                if (match.Success)
+                {
+                    // Parse the matched value as double
+                    double value = double.Parse(match.Value);
 
-                // Find all matches in the string
-                MatchCollection matches = Regex.Matches(jsonAsText, pattern);
-
-                // Convert matches to a list of doubles
-                var values = matches.Cast<Match>().Select(m => double.Parse(m.Value)).ToList();
-
-                // Find the maximum value
-                double maxValue = values.Max();
-
-                string unit = "Energy: ";
-
-                outputArea.text = unit + maxValue;
-                outputArea2.text = unit + maxValue;
+                    // Display the value in the console and in the UI
+                    Debug.Log("Total Energy: " + value);
+                    outputArea.text = "Total Energy: " + value;
+                    
+                }
+                else
+                {
+                    // If no match found, display an error message
+                    Debug.LogError("No numerical value found in the response.");
+                    outputArea.text = "No numerical value found.";
+                }
             }
         }
     }
