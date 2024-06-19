@@ -63,7 +63,9 @@ public class GetMethodBD2 : MonoBehaviour
         yield return StartCoroutine(SendRequests(requests));
     }
 
-    // Coroutine to send multiple requests and handle responses
+
+    // ----- Coroutine to send multiple requests and handle responses ----- 
+
     IEnumerator SendRequests(UnityWebRequest[] requests)
     {
         // Send all requests in parallel
@@ -87,7 +89,9 @@ public class GetMethodBD2 : MonoBehaviour
         ProcessResponse(requests[2], outputArea3, "Total Temperature: ");
     }
 
-    // Method to process each response
+
+    // ----- Method to process each response ----- 
+
     void ProcessResponse(UnityWebRequest request, TMP_InputField outputArea, string label)
     {
         if (request.isNetworkError || request.isHttpError)

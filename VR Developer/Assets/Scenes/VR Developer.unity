@@ -5505,7 +5505,7 @@ GameObject:
   - component: {fileID: 1121704374}
   - component: {fileID: 1121704373}
   m_Layer: 5
-  m_Name: C02Output
+  m_Name: CO2Output
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
