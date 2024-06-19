@@ -53,11 +53,13 @@ public class GetMethodBD : MonoBehaviour
         outputArea3.text = "Loading...";
 
         // Define the URIs for the HTTP GET requests
-        string uri1 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
-        string uri2 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
+        string uri1 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201";
+        string uri2 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530530%27%20ORDER%20BY%20time%20DESC%20LIMIT%201";
         string uri3 = "http://172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
 
-        // Create an array of UnityWebRequests
+
+
+        // Create an array of UnityWebRequests3471233
         UnityWebRequest[] requests = new UnityWebRequest[]
         {
             UnityWebRequest.Get(uri1),
