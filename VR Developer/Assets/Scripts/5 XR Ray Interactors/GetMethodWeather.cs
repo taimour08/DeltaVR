@@ -39,12 +39,12 @@ public class GetMethodWeather : MonoBehaviour
             if (request.isNetworkError || request.isHttpError)
             {
                 // Display the error message in the UI text field with a lightning bolt icon
-                outputArea.text = "⚡ " + request.error;
+                outputArea.text = request.error;
             }
             else
             {
                 // Display the downloaded text in the UI text field with a lightning bolt icon
-                outputArea.text = "⚡ " + request.downloadHandler.text;
+                outputArea.text = request.downloadHandler.text;
             }
         }
     }

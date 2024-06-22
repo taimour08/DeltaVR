@@ -120,6 +120,7 @@ public class GetMethodIOT : MonoBehaviour
             {
                 // Parse the matched value as double
                 double value = double.Parse(match.Value);
+                value = (double)(int)value;
 
                 // Display the value in the console and in the UI
                 Debug.Log(label + value);
