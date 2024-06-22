@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-public class GetMethodBD : MonoBehaviour
+public class GetMethodIOT : MonoBehaviour
 {
     TMP_InputField outputArea;
     TMP_InputField outputArea2;
@@ -19,9 +19,9 @@ public class GetMethodBD : MonoBehaviour
         Debug.Log("Start method called.");
 
         // Find and get the UI InputField component named "OutputArea"
-        outputArea = GameObject.Find("EnergyOutput").GetComponent<TMP_InputField>();
-        outputArea2 = GameObject.Find("CO2Output").GetComponent<TMP_InputField>();
-        outputArea3 = GameObject.Find("TempOutput").GetComponent<TMP_InputField>();
+        outputArea = GameObject.Find("Energy2").GetComponent<TMP_InputField>();
+        outputArea2 = GameObject.Find("CO22").GetComponent<TMP_InputField>();
+        outputArea3 = GameObject.Find("Temp2").GetComponent<TMP_InputField>();
 
         // Log to ensure the input fields are correctly assigned
         Debug.Log($"OutputArea: {outputArea != null}, OutputArea2: {outputArea2 != null}, OutputArea3: {outputArea3 != null}");
