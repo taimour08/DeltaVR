@@ -8,6 +8,11 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 
+/*    MAIN IDEA
+    - Uses a string array. process function to store the final string in indices. 
+    - Use the three functions to change the value of the index that is currently show on the screen
+*/
+
 public class GetMethodBD1 : MonoBehaviour
 {
     TMP_InputField theOutput;
@@ -94,20 +99,20 @@ public class GetMethodBD1 : MonoBehaviour
             }
         }
 
-        // Process responses for each request
+        // Process responses for each request. Put output strings in each of the index of string list 
         ProcessResponse(requests[0], 0, "Total Energy: ");
         ProcessResponse(requests[1], 1, "Total CO2: ");
         ProcessResponse(requests[2], 2, "Total Temperature: ");
     }
 
-    // Method to process each response
+    // Method to process each response - (Get the output of the request)
     void ProcessResponse(UnityWebRequest request, int index, string label)
     {
         if (request.isNetworkError || request.isHttpError)
         {
             // Display the error message in the UI text field
             Debug.LogError($"Error in request: {request.error}");
-            outputs[index] = $"⚡ {request.error}";
+            outputs[index] = $"{request.error}";
         }
         else
         {
@@ -123,22 +128,24 @@ public class GetMethodBD1 : MonoBehaviour
                 
             if (match.Success)
             {
-                // Parse the matched value as double
+                // Parse (Convert) the matched value as double
                 double value = double.Parse(match.Value);
                 int intValue = (int)value;
 
                 // Display the value in the console and in the UI
                 Debug.Log(label + intValue);
-                outputs[index] = $"⚡ {label}{intValue}";
+                outputs[index] = $"{label}{intValue}";
             }
             else
             {
                 // If no match found, display an error message
                 Debug.LogError("No numerical value found in the response.");
-                outputs[index] = "⚡ No numerical value found.";
+                outputs[index] = "No numerical value found.";
             }
         }
     }
+
+  
 
     // Show the current output based on the currentIndex
     void ShowCurrentOutput()
