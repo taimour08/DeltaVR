@@ -7,6 +7,11 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+
+/*  the script to get data from the global config: getting data and parsing it into the 
+    vars in the config class. rest is the same, all the variables are used instead of the arguments
+*/
+
 public class GetMethodBD : MonoBehaviour
 {
     TMP_InputField outputArea;
