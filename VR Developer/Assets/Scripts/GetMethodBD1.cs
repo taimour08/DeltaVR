@@ -7,24 +7,38 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-public class GetMethodIOT : MonoBehaviour
+
+/*    MAIN IDEA
+    - Uses a string array. process function to store the final string in indices. 
+    - Use the three functions to change the value of the index that is currently show on the screen
+*/
+
+public class GetMethodBD1 : MonoBehaviour
 {
-    TMP_InputField outputArea;
-    TMP_InputField outputArea2;
-    TMP_InputField outputArea3;
+    TMP_InputField theOutput;
+    Button nextButton;
+    Button prevButton;
+
+    string[] outputs = new string[3];
+    int currentIndex = 0;
 
     // Start is a Unity method called when the script starts running
     void Start()
     {
         Debug.Log("Start method called.");
 
-        // Find and get the UI InputField component named "OutputArea"
-        outputArea = GameObject.Find("Energy2").GetComponent<TMP_InputField>();
-        outputArea2 = GameObject.Find("CO22").GetComponent<TMP_InputField>();
-        outputArea3 = GameObject.Find("Temp2").GetComponent<TMP_InputField>();
+        // Find and get the UI InputField component named "TheOutput"
+        theOutput = GameObject.Find("TheOutput").GetComponent<TMP_InputField>();
 
-        // Log to ensure the input fields are correctly assigned
-        Debug.Log($"OutputArea: {outputArea != null}, OutputArea2: {outputArea2 != null}, OutputArea3: {outputArea3 != null}");
+        // Find the buttons and add listeners
+        nextButton = GameObject.Find("Next").GetComponent<Button>();
+        prevButton = GameObject.Find("Prev").GetComponent<Button>();
+
+        nextButton.onClick.AddListener(ShowNext);
+        prevButton.onClick.AddListener(ShowPrev);
+
+        // Log to ensure the input field and buttons are correctly assigned
+        Debug.Log($"TheOutput: {theOutput != null}, NextButton: {nextButton != null}, PrevButton: {prevButton != null}");
 
         // Start the coroutine to fetch data periodically
         StartCoroutine(FetchDataPeriodically());
@@ -38,7 +52,10 @@ public class GetMethodIOT : MonoBehaviour
             Debug.Log("Fetching data...");
             // Fetch data for all three URIs
             yield return StartCoroutine(GetData_Coroutine());
-            
+
+            // Show the first data item initially
+            ShowCurrentOutput();
+
             // Wait for 2 minutes before fetching data again
             yield return new WaitForSeconds(120);
         }
@@ -47,19 +64,12 @@ public class GetMethodIOT : MonoBehaviour
     // Coroutine for handling data retrieval asynchronously
     IEnumerator GetData_Coroutine()
     {
-        // Display "Loading..." in the UI text fields
-        outputArea.text = "Loading...";
-        outputArea2.text = "Loading...";
-        outputArea3.text = "Loading...";
-
         // Define the URIs for the HTTP GET requests
         string uri1 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201";
         string uri2 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530530%27%20ORDER%20BY%20time%20DESC%20LIMIT%201";
         string uri3 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
 
-
-
-        // Create an array of UnityWebRequests3471233
+        // Create an array of UnityWebRequests
         UnityWebRequest[] requests = new UnityWebRequest[]
         {
             UnityWebRequest.Get(uri1),
@@ -89,26 +99,26 @@ public class GetMethodIOT : MonoBehaviour
             }
         }
 
-        // Process responses for each request
-        ProcessResponse(requests[0], outputArea, "Total Energy: ");
-        ProcessResponse(requests[1], outputArea2, "Total CO2: ");
-        ProcessResponse(requests[2], outputArea3, "Total Temperature: ");
+        // Process responses for each request. Put output strings in each of the index of string list 
+        ProcessResponse(requests[0], 0, "Total Energy: ");
+        ProcessResponse(requests[1], 1, "Total CO2: ");
+        ProcessResponse(requests[2], 2, "Temperature: ");
     }
 
-    // Method to process each response
-    void ProcessResponse(UnityWebRequest request, TMP_InputField outputArea, string label)
+    // Method to process each response - (Get the output of the request)
+    void ProcessResponse(UnityWebRequest request, int index, string label)
     {
         if (request.isNetworkError || request.isHttpError)
         {
             // Display the error message in the UI text field
             Debug.LogError($"Error in request: {request.error}");
-            outputArea.text = request.error;
+            outputs[index] = $"{request.error}";
         }
         else
         {
             // Display the downloaded text in the UI text field
             string jsonAsText = request.downloadHandler.text;
-            Debug.Log($"Response for {label}: {jsonAsText}");
+            Debug.Log($"Response for {label}: {jsonAsText}"); 
 
             // Regular expression to match the last floating point number after all alphabets
             string pattern = @"(?<=\D|^)\d+\.\d+(?!.*\d+\.\d+)";
@@ -118,20 +128,42 @@ public class GetMethodIOT : MonoBehaviour
                 
             if (match.Success)
             {
-                // Parse the matched value as double
+                // Parse (Convert) the matched value as double
                 double value = double.Parse(match.Value);
-                value = (double)(int)value;
+                int intValue = (int)value;
 
                 // Display the value in the console and in the UI
-                Debug.Log(label + value);
-                outputArea.text = label + value;
+                Debug.Log(label + intValue);
+                outputs[index] = $"{label}{intValue}";
             }
             else
             {
                 // If no match found, display an error message
                 Debug.LogError("No numerical value found in the response.");
-                outputArea.text = "No numerical value found.";
+                outputs[index] = "No numerical value found.";
             }
         }
+    }
+
+  
+
+    // Show the current output based on the currentIndex
+    void ShowCurrentOutput()
+    {
+        theOutput.text = outputs[currentIndex];
+    }
+
+    // Show the next output
+    void ShowNext()
+    {
+        currentIndex = (currentIndex + 1) % outputs.Length; // division by o.l so the value stays in bounds. 
+        ShowCurrentOutput();
+    }
+
+    // Show the previous output
+    void ShowPrev()
+    {
+        currentIndex = (currentIndex - 1 + outputs.Length) % outputs.Length;
+        ShowCurrentOutput();
     }
 }

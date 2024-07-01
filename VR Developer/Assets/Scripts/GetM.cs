@@ -23,8 +23,8 @@ public class GetMethodBD2 : MonoBehaviour
 
         // Find and get the UI components
         outputArea = GameObject.Find("TheOutput").GetComponent<TMP_InputField>();
-        nextButton = GameObject.Find("NextButton").GetComponent<Button>();
-        prevButton = GameObject.Find("PrevButton").GetComponent<Button>();
+        nextButton = GameObject.Find("Next").GetComponent<Button>();
+        prevButton = GameObject.Find("Prev").GetComponent<Button>();
 
         // Log to ensure the input field and buttons are correctly assigned
         Debug.Log($"OutputArea: {outputArea != null}, NextButton: {nextButton != null}, PrevButton: {prevButton != null}");
@@ -43,7 +43,9 @@ public class GetMethodBD2 : MonoBehaviour
     {
         string configFilePath = Path.Combine(Application.streamingAssetsPath, "config.json");
         string json = File.ReadAllText(configFilePath);
-        config = JsonUtility.FromJson<GlobalConfig>(json);
+
+        // sees the properties in the json file and puts them aacordingly in the classs
+        config = JsonUtility.FromJson<GlobalConfig>(json);  
     }
 
     // Coroutine to fetch data periodically
@@ -119,32 +121,16 @@ public class GetMethodBD2 : MonoBehaviour
     void ShowNext()
     {
         currentIndex = (currentIndex + 1) % config.infoLines.Length;
-        DisplayCurrentInfo();
+        StartCoroutine(GetData_Coroutine());
     }
 
     void ShowPrev()
     {
         currentIndex = (currentIndex - 1 + config.infoLines.Length) % config.infoLines.Length;
-        DisplayCurrentInfo();
+        StartCoroutine(GetData_Coroutine());
     }
 
 
-// Switch? 
-    void DisplayCurrentInfo()
-    {
-        switch (currentIndex)
-        {
-            case 0:
-                StartCoroutine(GetData_Coroutine());
-                break;
-            case 1:
-                StartCoroutine(GetData_Coroutine());
-                break;
-            case 2:
-                StartCoroutine(GetData_Coroutine());
-                break;
-        }
-    }
 }
 
 [Serializable]

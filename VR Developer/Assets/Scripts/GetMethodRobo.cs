@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
     - Use the three functions to change the value of the index that is currently show on the screen
 */
 
-public class GetMethodBD1 : MonoBehaviour
+public class GetMethodRobo: MonoBehaviour
 {
     TMP_InputField theOutput;
     Button nextButton;
@@ -65,6 +65,7 @@ public class GetMethodBD1 : MonoBehaviour
     IEnumerator GetData_Coroutine()
     {
         // Define the URIs for the HTTP GET requests
+        // put host names for iot lab devices
         string uri1 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201";
         string uri2 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530530%27%20ORDER%20BY%20time%20DESC%20LIMIT%201";
         string uri3 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
@@ -102,7 +103,7 @@ public class GetMethodBD1 : MonoBehaviour
         // Process responses for each request. Put output strings in each of the index of string list 
         ProcessResponse(requests[0], 0, "Total Energy: ");
         ProcessResponse(requests[1], 1, "Total CO2: ");
-        ProcessResponse(requests[2], 2, "Total Temperature: ");
+        ProcessResponse(requests[2], 2, "Temperature: ");
     }
 
     // Method to process each response - (Get the output of the request)
