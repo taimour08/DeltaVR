@@ -7,17 +7,12 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-
-/*    MAIN IDEA
-    - Uses a string array. process function to store the final string in indices. 
-    - Use the three functions to change the value of the index that is currently show on the screen
-*/
-
 public class GetMethodBD1 : MonoBehaviour
 {
     TMP_InputField theOutput;
     Button nextButton;
     Button prevButton;
+    public GameObject Marker; // Reference to the Marker object
 
     string[] outputs = new string[3];
     int currentIndex = 0;
@@ -42,6 +37,9 @@ public class GetMethodBD1 : MonoBehaviour
 
         // Start the coroutine to fetch data periodically
         StartCoroutine(FetchDataPeriodically());
+
+        // Update marker position initially
+        UpdateMarkerPosition();
     }
 
     // Coroutine to fetch data periodically every 2 minutes
@@ -145,12 +143,11 @@ public class GetMethodBD1 : MonoBehaviour
         }
     }
 
-  
-
     // Show the current output based on the currentIndex
     void ShowCurrentOutput()
     {
         theOutput.text = outputs[currentIndex];
+        UpdateMarkerPosition(); // Update marker position whenever the output changes
     }
 
     // Show the next output
@@ -165,5 +162,28 @@ public class GetMethodBD1 : MonoBehaviour
     {
         currentIndex = (currentIndex - 1 + outputs.Length) % outputs.Length;
         ShowCurrentOutput();
+    }
+
+    // Update the marker position based on the current index
+    void UpdateMarkerPosition()
+    {
+        Vector3 newPosition;
+        switch (currentIndex)
+        {
+            case 2:
+                newPosition = new Vector3(-59.65f, 16.35f, -286.2f);
+                break;
+            case 1:
+                newPosition = new Vector3(-60.02f, 16.35f, -286.2f);
+                break;
+            case 0:
+                newPosition = new Vector3(-60.42f, 16.35f, -286.2f);
+                break;
+            default:
+                newPosition = Marker.transform.position;
+                break;
+        }
+
+        Marker.transform.position = newPosition;
     }
 }
