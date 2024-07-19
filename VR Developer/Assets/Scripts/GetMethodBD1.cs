@@ -6,6 +6,30 @@ using UnityEngine.Networking;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.IO;
+
+// Define the Config class to match the structure of the JSON file
+[Serializable]
+public class PollingRates
+{
+    public int fetchInterval;
+}
+
+[Serializable]
+public class Urls
+{
+    public string Energy;
+    public string CO2;
+    public string Temperature;
+}
+
+[Serializable]
+public class Config
+{
+    public PollingRates pollingRates;
+    public string[] infoLines;
+    public Urls urls;
+}
 
 public class GetMethodBD1 : MonoBehaviour
 {
@@ -14,13 +38,25 @@ public class GetMethodBD1 : MonoBehaviour
     Button prevButton;
     public GameObject Marker; // Reference to the Marker object
 
-    string[] outputs = new string[3];
+    string[] outputs;
     int currentIndex = 0;
+
+    // Configuration fields
+    Config config;
+    string[] urls;
+    string[] infoLines;
+    int fetchInterval;
 
     // Start is a Unity method called when the script starts running
     void Start()
     {
         Debug.Log("Start method called.");
+
+        // Load the configuration
+        LoadConfig();
+
+        // Initialize the outputs array based on the number of infoLines
+        outputs = new string[infoLines.Length];
 
         // Find and get the UI InputField component named "TheOutput"
         theOutput = GameObject.Find("TheOutput").GetComponent<TMP_InputField>();
@@ -42,38 +78,43 @@ public class GetMethodBD1 : MonoBehaviour
         UpdateMarkerPosition();
     }
 
-    // Coroutine to fetch data periodically every 2 minutes
+    void LoadConfig()
+    {
+        // Load the JSON file from the Resources folder
+        string path = Path.Combine(Application.streamingAssetsPath, "globalconfi.json");
+        string jsonString = File.ReadAllText(path);
+
+        // Parse the JSON data
+        config = JsonUtility.FromJson<Config>(jsonString);
+
+        // Extract configuration values
+        fetchInterval = config.pollingRates.fetchInterval;
+        infoLines = config.infoLines;
+        urls = new string[] { config.urls.Energy, config.urls.CO2, config.urls.Temperature };
+    }
+
+    // Coroutine to fetch data periodically
     IEnumerator FetchDataPeriodically()
     {
         while (true)
         {
             Debug.Log("Fetching data...");
-            // Fetch data for all three URIs
+            // Fetch data for all configured URIs
             yield return StartCoroutine(GetData_Coroutine());
 
             // Show the first data item initially
             ShowCurrentOutput();
 
-            // Wait for 2 minutes before fetching data again
-            yield return new WaitForSeconds(120);
+            // Wait for the configured interval before fetching data again
+            yield return new WaitForSeconds(fetchInterval);
         }
     }
 
     // Coroutine for handling data retrieval asynchronously
     IEnumerator GetData_Coroutine()
     {
-        // Define the URIs for the HTTP GET requests
-        string uri1 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201";
-        string uri2 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530530%27%20ORDER%20BY%20time%20DESC%20LIMIT%201";
-        string uri3 = "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu%22%20ORDER%20BY%20time%20DESC%20LIMIT%201";
-
         // Create an array of UnityWebRequests
-        UnityWebRequest[] requests = new UnityWebRequest[]
-        {
-            UnityWebRequest.Get(uri1),
-            UnityWebRequest.Get(uri2),
-            UnityWebRequest.Get(uri3)
-        };
+        UnityWebRequest[] requests = urls.Select(url => UnityWebRequest.Get(url)).ToArray();
 
         // Send all requests and wait for responses
         yield return StartCoroutine(SendRequests(requests));
@@ -98,12 +139,13 @@ public class GetMethodBD1 : MonoBehaviour
         }
 
         // Process responses for each request. Put output strings in each of the index of string list 
-        ProcessResponse(requests[0], 0, "Total Energy: ");
-        ProcessResponse(requests[1], 1, "Total CO2: ");
-        ProcessResponse(requests[2], 2, "Temperature: ");
+        for (int i = 0; i < requests.Length; i++)
+        {
+            ProcessResponse(requests[i], i, infoLines[i] + ": ");
+        }
     }
 
-    // Method to process each response - (Get the output of the request)
+    // Method to process each response
     void ProcessResponse(UnityWebRequest request, int index, string label)
     {
         if (request.isNetworkError || request.isHttpError)
