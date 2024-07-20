@@ -78,10 +78,12 @@ public class GetMethodBD1 : MonoBehaviour
         UpdateMarkerPosition();
     }
 
+
+    // this function takes data from the config, converts it into text, parses it and puts it into the relevant variables declared above
     void LoadConfig()
     {
         // Load the JSON file from the Resources folder
-        string path = Path.Combine(Application.streamingAssetsPath, "globalconfi.json");
+        string path = Path.Combine(Application.dataPath, "GlobalConfig.json");
         string jsonString = File.ReadAllText(path);
 
         // Parse the JSON data
