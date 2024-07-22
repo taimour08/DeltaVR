@@ -37,6 +37,10 @@ public class GetMethodBD1 : MonoBehaviour
     Button nextButton;
     Button prevButton;
     public GameObject Marker; // Reference to the Marker object
+    public string outputName = "TheOutput";
+    public string nextName = "Next";
+    public string prevName = "Prev";
+
 
     string[] outputs;
     int currentIndex = 0;
@@ -51,7 +55,7 @@ public class GetMethodBD1 : MonoBehaviour
     public int urlSetIndex = 0;
 
     // Start is a Unity method called when the script starts running
-    void Start()
+    public void Start()
     {
         Debug.Log("Start method called.");
 
@@ -62,11 +66,11 @@ public class GetMethodBD1 : MonoBehaviour
         outputs = new string[infoLines.Length];
 
         // Find and get the UI InputField component named "TheOutput"
-        theOutput = GameObject.Find("TheOutput").GetComponent<TMP_InputField>();
+        theOutput = GameObject.Find(outputName).GetComponent<TMP_InputField>();
 
         // Find the buttons and add listeners
-        nextButton = GameObject.Find("Next").GetComponent<Button>();
-        prevButton = GameObject.Find("Prev").GetComponent<Button>();
+        nextButton = GameObject.Find(nextName).GetComponent<Button>();
+        prevButton = GameObject.Find(prevName).GetComponent<Button>();
 
         nextButton.onClick.AddListener(ShowNext);
         prevButton.onClick.AddListener(ShowPrev);
@@ -82,20 +86,57 @@ public class GetMethodBD1 : MonoBehaviour
     }
 
     // this function takes data from the config, converts it into text, parses it and puts it into the relevant variables declared above
-    void LoadConfig()
+void LoadConfig()
+{
+    // Load the JSON file from the Assets folder
+    string path = Path.Combine(Application.dataPath, "GlobalConfig.json");
+    
+    if (!File.Exists(path))
     {
-        // Load the JSON file from the Resources folder
-        string path = Path.Combine(Application.dataPath, "GlobalConfig.json");
-        string jsonString = File.ReadAllText(path);
-
-        // Parse the JSON data
-        config = JsonUtility.FromJson<Config>(jsonString);
-
-        // Extract configuration values
-        fetchInterval = config.pollingRates.fetchInterval;
-        infoLines = config.infoLines;
-        urls = config.urlSets[urlSetIndex];
+        Debug.LogError($"GlobalConfig.json file not found at path: {path}");
+        return;
     }
+
+    string jsonString = File.ReadAllText(path);
+
+    if (string.IsNullOrEmpty(jsonString))
+    {
+        Debug.LogError("GlobalConfig.json file is empty or could not be read.");
+        return;
+    }
+
+    // Parse the JSON data
+    config = JsonUtility.FromJson<Config>(jsonString);
+
+    if (config == null)
+    {
+        Debug.LogError("Failed to parse GlobalConfig.json file.");
+        return;
+    }
+
+    Debug.Log($"Parsed Config: {JsonUtility.ToJson(config)}");
+
+    if (config.urlSets == null || config.urlSets.Length == 0)
+    {
+        Debug.LogError("No URL sets found in GlobalConfig.json file.");
+        return;
+    }
+
+    if (urlSetIndex < 0 || urlSetIndex >= config.urlSets.Length)
+    {
+        Debug.LogError($"Invalid urlSetIndex: {urlSetIndex}. It should be between 0 and {config.urlSets.Length - 1}");
+        return;
+    }
+
+    // Extract configuration values
+    fetchInterval = config.pollingRates.fetchInterval;
+    infoLines = config.infoLines;
+    urls = config.urlSets[urlSetIndex];
+
+    Debug.Log($"Config loaded successfully. Fetch Interval: {fetchInterval}, URL Set Index: {urlSetIndex}");
+    Debug.Log($"URL Set: Energy = {urls.Energy}, CO2 = {urls.CO2}, Temperature = {urls.Temperature}");
+}
+
 
     // Coroutine to fetch data periodically
     IEnumerator FetchDataPeriodically()
