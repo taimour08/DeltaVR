@@ -28,7 +28,7 @@ public class Config
 {
     public PollingRates pollingRates;
     public string[] infoLines;
-    public Urls urls;
+    public Urls[] urlSets;
 }
 
 public class GetMethodBD1 : MonoBehaviour
@@ -43,9 +43,12 @@ public class GetMethodBD1 : MonoBehaviour
 
     // Configuration fields
     Config config;
-    string[] urls;
+    Urls urls;
     string[] infoLines;
     int fetchInterval;
+
+    // Field to specify which set of URLs this instance should use
+    public int urlSetIndex = 0;
 
     // Start is a Unity method called when the script starts running
     void Start()
@@ -78,7 +81,6 @@ public class GetMethodBD1 : MonoBehaviour
         UpdateMarkerPosition();
     }
 
-
     // this function takes data from the config, converts it into text, parses it and puts it into the relevant variables declared above
     void LoadConfig()
     {
@@ -92,7 +94,7 @@ public class GetMethodBD1 : MonoBehaviour
         // Extract configuration values
         fetchInterval = config.pollingRates.fetchInterval;
         infoLines = config.infoLines;
-        urls = new string[] { config.urls.Energy, config.urls.CO2, config.urls.Temperature };
+        urls = config.urlSets[urlSetIndex];
     }
 
     // Coroutine to fetch data periodically
@@ -116,7 +118,12 @@ public class GetMethodBD1 : MonoBehaviour
     IEnumerator GetData_Coroutine()
     {
         // Create an array of UnityWebRequests
-        UnityWebRequest[] requests = urls.Select(url => UnityWebRequest.Get(url)).ToArray();
+        UnityWebRequest[] requests = new UnityWebRequest[]
+        {
+            UnityWebRequest.Get(urls.Energy),
+            UnityWebRequest.Get(urls.CO2),
+            UnityWebRequest.Get(urls.Temperature)
+        };
 
         // Send all requests and wait for responses
         yield return StartCoroutine(SendRequests(requests));
