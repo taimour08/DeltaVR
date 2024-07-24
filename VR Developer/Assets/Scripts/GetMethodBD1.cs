@@ -105,7 +105,7 @@ void LoadConfig()
         return;
     }
 
-    // Parse the JSON data
+    // Parse the JSON data   ** Hypothesis is that the problem lies here (enhance skills)
     config = JsonUtility.FromJson<Config>(jsonString);
 
     if (config == null)
