@@ -161,7 +161,7 @@ public class GetMethodWeather : MonoBehaviour
 
                 outputArea.text = weatherInfo;
 
-                Vector3 position = new Vector3(-63.98f, 16f, -294f);
+                Vector3 position = new Vector3(-64.167f, 15.883f, -293.741f);
 
                 if (weatherData.weather[0].description.ToLower().Contains("rain"))
                 {
