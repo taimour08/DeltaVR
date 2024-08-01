@@ -59,10 +59,6 @@ public class Clouds
     public int all;
 }
 
-// same way of catching JSON in C#
-// above are the same as the urls in pf
-// this is the same as Config in previous files
-
 [System.Serializable]
 public class WeatherData
 {
@@ -77,27 +73,25 @@ public class WeatherData
     public int cod;
 }
 
-
 public class GetMethodWeather : MonoBehaviour
 {
+    public GameObject rainObject;
+    public GameObject snowObject;
+    public GameObject sunObject;
+
     TMP_InputField outputArea;
     string weatherUrl;
 
-    // Start is a Unity method called when the script starts running
     void Start()
     {
-        // Find and get the UI InputField component named "OutputArea"
         outputArea = GameObject.Find("OutputArea").GetComponent<TMP_InputField>();
-        // Find the UI Button component named "GetButton" and add a listener for the click event to call the GetData method
         GameObject.Find("GetButton").GetComponent<Button>().onClick.AddListener(GetData);
 
-        // Load the configuration file to get the weather URL
         LoadConfig();
     }
 
     void LoadConfig()
     {
-        // Path to the JSON configuration file
         string path = Path.Combine(Application.dataPath, "GlobalConfig.json");
 
         if (!File.Exists(path))
@@ -116,7 +110,6 @@ public class GetMethodWeather : MonoBehaviour
 
         Debug.Log($"JSON String: {jsonString}");
 
-        // Parse the JSON data
         OConfig config = JsonUtility.FromJson<OConfig>(jsonString);
 
         if (config == null || config.openWeather == null || string.IsNullOrEmpty(config.openWeather.url))
@@ -125,60 +118,82 @@ public class GetMethodWeather : MonoBehaviour
             return;
         }
 
-        // Set the weather URL
         weatherUrl = config.openWeather.url;
     }
 
-    // GetData method triggered when the button is clicked
     void GetData() => StartCoroutine(GetData_Coroutine());
 
-    // Coroutine for handling data retrieval asynchronously
     IEnumerator GetData_Coroutine()
-{
-    // Display "Loading..." in the UI text field with a lightning bolt icon
-    outputArea.text = "⚡ Loading...";
-
-    if (string.IsNullOrEmpty(weatherUrl))
     {
-        outputArea.text = "Weather URL not configured.";
-        yield break;
+        outputArea.text = "⚡ Loading...";
+
+        if (string.IsNullOrEmpty(weatherUrl))
+        {
+            outputArea.text = "Weather URL not configured.";
+            yield break;
+        }
+
+        using (UnityWebRequest request = UnityWebRequest.Get(weatherUrl))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                outputArea.text = request.error;
+            }
+            else
+            {
+                string jsonResponse = request.downloadHandler.text;
+                WeatherData weatherData = JsonUtility.FromJson<WeatherData>(jsonResponse);
+
+                string weatherInfo = $"Weather: {weatherData.weather[0].description}\n" +
+                                     $"Temp: {weatherData.main.temp} K\n" +
+                                     $"Temp feels like: {weatherData.main.feels_like} K\n" +
+                                     $"Temp min: {weatherData.main.temp_min} K\n" +
+                                     $"Temp max: {weatherData.main.temp_max} K\n" +
+                                     $"Pressure: {weatherData.main.pressure} hPa\n" +
+                                     $"Humidity: {weatherData.main.humidity}%\n" +
+                                     $"Sea level: {weatherData.main.sea_level} hPa\n" +
+                                     $"Ground level: {weatherData.main.grnd_level} hPa\n" +
+                                     $"Visibility: {weatherData.visibility} m\n" +
+                                     $"Wind speed: {weatherData.wind.speed} m/s\n" +
+                                     $"Wind direction: {weatherData.wind.deg}°";
+
+                outputArea.text = weatherInfo;
+
+                Vector3 position = new Vector3(-63.98f, 16f, -294f);
+
+                if (weatherData.weather[0].description.ToLower().Contains("rain"))
+                {
+                    ShowWeatherObject(rainObject, position);
+                }
+                else if (weatherData.weather[0].description.ToLower().Contains("cloud"))
+                {
+                    ShowWeatherObject(snowObject, position);
+                }
+                else if (weatherData.weather[0].description.ToLower().Contains("sun"))
+                {
+                    ShowWeatherObject(sunObject, position);
+                }
+                else
+                {
+                    HideAllWeatherObjects();
+                }
+            }
+        }
     }
 
-    // Create a UnityWebRequest for the specified URI
-    using (UnityWebRequest request = UnityWebRequest.Get(weatherUrl))
+    void ShowWeatherObject(GameObject weatherObject, Vector3 position)
     {
-        // Send the request and wait for a response
-        yield return request.SendWebRequest();
-
-        // Check if there's a network or HTTP error
-        if (request.isNetworkError || request.isHttpError)
-        {
-            // Display the error message in the UI text field with a lightning bolt icon
-            outputArea.text = request.error;
-        }
-        else
-        {
-            // Parse the JSON response
-            string jsonResponse = request.downloadHandler.text;
-            WeatherData weatherData = JsonUtility.FromJson<WeatherData>(jsonResponse);
-
-            // Format and display the weather information
-            string weatherInfo = $"Weather: {weatherData.weather[0].description}\n" +
-                                 $"Temp: {weatherData.main.temp} K\n" +
-                                 $"Temp feels like: {weatherData.main.feels_like} K\n" +
-                                 $"Temp min: {weatherData.main.temp_min} K\n" +
-                                 $"Temp max: {weatherData.main.temp_max} K\n" +
-                                 $"Pressure: {weatherData.main.pressure} hPa\n" +
-                                 $"Humidity: {weatherData.main.humidity}%\n" +
-                                 $"Sea level: {weatherData.main.sea_level} hPa\n" +
-                                 $"Ground level: {weatherData.main.grnd_level} hPa\n" +
-                                 $"Visibility: {weatherData.visibility} m\n" +
-                                 $"Wind speed: {weatherData.wind.speed} m/s\n" +
-                                 $"Wind direction: {weatherData.wind.deg}°";
-
-            outputArea.text = weatherInfo;
-        }
+        HideAllWeatherObjects();
+        weatherObject.SetActive(true);
+        weatherObject.transform.position = position;
     }
-}
 
+    void HideAllWeatherObjects()
+    {
+        rainObject.SetActive(false);
+        snowObject.SetActive(false);
+        sunObject.SetActive(false);
+    }
 }
