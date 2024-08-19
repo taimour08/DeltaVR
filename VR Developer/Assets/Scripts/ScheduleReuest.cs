@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
-//using Newtonsoft.Json.Linq; // For JSON parsing (optional, use if needed)
-
+using TMPro;  // Import TextMeshPro namespace
 
 public class ScheduleRequest : MonoBehaviour
 {
+    // Reference to the TMP InputField component where the response will be displayed
+    public TMP_InputField responseInputField;
+
     void Start()
     {
+        // Start the coroutine to make the POST request
         StartCoroutine(PostRequest("https://ois2.ut.ee/api/timetable/room", "NAR18OH", "1020", "2024-05-02"));
     }
 
@@ -32,6 +35,8 @@ public class ScheduleRequest : MonoBehaviour
         if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
         {
             Debug.LogError(request.error);
+            // Display error in the TMP InputField
+            responseInputField.text = "Error: " + request.error;
         }
         else
         {
@@ -39,12 +44,8 @@ public class ScheduleRequest : MonoBehaviour
             string jsonResponse = request.downloadHandler.text;
             Debug.Log("This is the Response: " + jsonResponse);
 
-            // Optionally, parse the JSON response
-            // For example, if the response is a JSON object:
-            // var data = JObject.Parse(jsonResponse);
-            // string someValue = data["someKey"].ToString();
-
-            // Further processing of the received data
+            // Display the response in the TMP InputField
+            responseInputField.text = jsonResponse;
         }
     }
 }
