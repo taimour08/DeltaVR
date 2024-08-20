@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/VR Developer.unity
+    path: Assets/Scenes/DeltaVR.unity
     guid: 7980be9828961c24f9c11b82339fc2b4
   - enabled: 0
     path: Assets/Scenes/VR Developer 1.unity
