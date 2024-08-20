@@ -1,7 +1,39 @@
 using UnityEngine;
+using System.IO;
 using UnityEngine.Networking;
 using System.Collections;
-using TMPro;  // Import TextMeshPro namespace
+using TMPro;
+
+[System.Serializable]
+public class GlobalConfig
+{
+    public PollingRates pollingRates;
+    public string[] infoLines;
+  //  public UrlSet[] urlSets;
+    public OpenWeather openWeather;
+    public Schedule schedule;
+
+    public static GlobalConfig LoadConfig(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            return JsonUtility.FromJson<GlobalConfig>(json);
+        }
+        else
+        {
+            Debug.LogError($"Config file not found: {filePath}");
+            return null;
+        }
+    }
+}
+
+[System.Serializable]
+public class Schedule
+{
+    public string room;
+    public string date;
+}
 
 [System.Serializable]
 public class Event
@@ -91,22 +123,36 @@ public class ScheduleRequest : MonoBehaviour
     // Reference to the TMP InputField component where the response will be displayed
     public TMP_InputField responseInputField;
 
+    // Path to the config file
+    string path = Path.Combine(Application.dataPath, "GlobalConfig.json");
+    private GlobalConfig globalConfig;
+
     void Start()
     {
-        // Start the coroutine to make the POST request
-        StartCoroutine(PostRequest("https://ois2.ut.ee/api/timetable/room", "NAR18OH", "1020", "2024-05-02"));
+        // Load the configuration
+        globalConfig = GlobalConfig.LoadConfig(path);
+
+        if (globalConfig != null)
+        {
+            // Start the coroutine to make the POST request using the config values
+            StartCoroutine(PostRequest(globalConfig.schedule.room, globalConfig.schedule.date));
+        }
+        else
+        {
+            Debug.LogError("Failed to load global configuration.");
+        }
     }
 
-    IEnumerator PostRequest(string url, string building, string room, string date)
+    IEnumerator PostRequest(string room, string date)
     {
         // Create a JSON object with the necessary data
-        string jsonData = $"{{\"building\": \"{building}\", \"room\": \"{room}\", \"date\": \"{date}\"}}";
+        string jsonData = $"{{\"building\": \"NAR18OH\", \"room\": \"{room}\", \"date\": \"{date}\"}}";
 
         // Convert the JSON string into a byte array
         byte[] postData = System.Text.Encoding.UTF8.GetBytes(jsonData);
 
         // Create the request
-        UnityWebRequest request = new UnityWebRequest(url, "POST");
+        UnityWebRequest request = new UnityWebRequest("https://ois2.ut.ee/api/timetable/room", "POST");
         request.uploadHandler = new UploadHandlerRaw(postData);
         request.downloadHandler = new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
