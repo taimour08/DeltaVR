@@ -1,4 +1,4 @@
-public class GetMethodRobo : GetMethodBD1
+public class GetMethodBD3 : GetMethodBD1
 {
     void Start()
     {

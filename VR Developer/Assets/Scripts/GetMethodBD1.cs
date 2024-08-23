@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -6,9 +7,7 @@ using UnityEngine.Networking;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.IO;
 
-// Define the Config class to match the structure of the JSON file
 [Serializable]
 public class PollingRates
 {
@@ -16,7 +15,7 @@ public class PollingRates
 }
 
 [Serializable]
-public class Urls
+public class UrlSet
 {
     public string Energy;
     public string CO2;
@@ -28,7 +27,7 @@ public class Config
 {
     public PollingRates pollingRates;
     public string[] infoLines;
-    public Urls[] urlSets;
+    public UrlSet[] urlSets;
 }
 
 public class GetMethodBD1 : MonoBehaviour
@@ -41,13 +40,12 @@ public class GetMethodBD1 : MonoBehaviour
     public string nextName = "Next";
     public string prevName = "Prev";
 
-
     string[] outputs;
     int currentIndex = 0;
 
     // Configuration fields
     Config config;
-    Urls urls;
+    UrlSet urls;
     string[] infoLines;
     int fetchInterval;
 
@@ -82,61 +80,60 @@ public class GetMethodBD1 : MonoBehaviour
         StartCoroutine(FetchDataPeriodically());
 
         // Update marker position initially
-      //  UpdateMarkerPosition();
+        UpdateMarkerPosition();
     }
 
-    // this function takes data from the config, converts it into text, parses it and puts it into the relevant variables declared above
-void LoadConfig()
-{
-    // Load the JSON file from the Assets folder
-    string path = Path.Combine(Application.dataPath, "GlobalConfig.json");
-    
-    if (!File.Exists(path))
+    // LoadConfig method to load the config file and initialize configuration fields
+    void LoadConfig()
     {
-        Debug.LogError($"GlobalConfig.json file not found at path: {path}");
-        return;
+        // Load the JSON file from the StreamingAssets folder
+        string path = Path.Combine(Application.streamingAssetsPath, "GlobalConfig.json");
+
+        if (!File.Exists(path))
+        {
+            Debug.LogError($"GlobalConfig.json file not found at path: {path}");
+            return;
+        }
+
+        string jsonString = File.ReadAllText(path);
+
+        if (string.IsNullOrEmpty(jsonString))
+        {
+            Debug.LogError("GlobalConfig.json file is empty or could not be read.");
+            return;
+        }
+
+        // Parse the JSON data
+        config = JsonUtility.FromJson<Config>(jsonString);
+
+        if (config == null)
+        {
+            Debug.LogError("Failed to parse GlobalConfig.json file.");
+            return;
+        }
+
+        Debug.Log($"Parsed Config: {JsonUtility.ToJson(config)}");
+
+        if (config.urlSets == null || config.urlSets.Length == 0)
+        {
+            Debug.LogError("No URL sets found in GlobalConfig.json file.");
+            return;
+        }
+
+        if (urlSetIndex < 0 || urlSetIndex >= config.urlSets.Length)
+        {
+            Debug.LogError($"Invalid urlSetIndex: {urlSetIndex}. It should be between 0 and {config.urlSets.Length - 1}");
+            return;
+        }
+
+        // Extract configuration values
+        fetchInterval = config.pollingRates.fetchInterval;
+        infoLines = config.infoLines;
+        urls = config.urlSets[urlSetIndex];
+
+        Debug.Log($"Config loaded successfully. Fetch Interval: {fetchInterval}, URL Set Index: {urlSetIndex}");
+        Debug.Log($"URL Set: Energy = {urls.Energy}, CO2 = {urls.CO2}, Temperature = {urls.Temperature}");
     }
-
-    string jsonString = File.ReadAllText(path);
-
-    if (string.IsNullOrEmpty(jsonString))
-    {
-        Debug.LogError("GlobalConfig.json file is empty or could not be read.");
-        return;
-    }
-
-    // Parse the JSON data   ** Hypothesis is that the problem lies here (enhance skills)
-    config = JsonUtility.FromJson<Config>(jsonString);
-
-    if (config == null)
-    {
-        Debug.LogError("Failed to parse GlobalConfig.json file.");
-        return;
-    }
-
-    Debug.Log($"Parsed Config: {JsonUtility.ToJson(config)}");
-
-    if (config.urlSets == null || config.urlSets.Length == 0)
-    {
-        Debug.LogError("No URL sets found in GlobalConfig.json file.");
-        return;
-    }
-
-    if (urlSetIndex < 0 || urlSetIndex >= config.urlSets.Length)
-    {
-        Debug.LogError($"Invalid urlSetIndex: {urlSetIndex}. It should be between 0 and {config.urlSets.Length - 1}");
-        return;
-    }
-
-    // Extract configuration values
-    fetchInterval = config.pollingRates.fetchInterval;
-    infoLines = config.infoLines;
-    urls = config.urlSets[urlSetIndex];
-
-    Debug.Log($"Config loaded successfully. Fetch Interval: {fetchInterval}, URL Set Index: {urlSetIndex}");
-    Debug.Log($"URL Set: Energy = {urls.Energy}, CO2 = {urls.CO2}, Temperature = {urls.Temperature}");
-}
-
 
     // Coroutine to fetch data periodically
     IEnumerator FetchDataPeriodically()
@@ -188,7 +185,7 @@ void LoadConfig()
             }
         }
 
-        // Process responses for each request. Put output strings in each of the index of string list 
+        // Process responses for each request
         for (int i = 0; i < requests.Length; i++)
         {
             ProcessResponse(requests[i], i, infoLines[i] + ": ");
@@ -208,14 +205,14 @@ void LoadConfig()
         {
             // Display the downloaded text in the UI text field
             string jsonAsText = request.downloadHandler.text;
-            Debug.Log($"Response for {label}: {jsonAsText}"); 
+            Debug.Log($"Response for {label}: {jsonAsText}");
 
             // Regular expression to match the last floating point number after all alphabets
             string pattern = @"(?<=\D|^)\d+\.\d+(?!.*\d+\.\d+)";
-                
+
             // Match the pattern in the JSON text
             Match match = Regex.Match(jsonAsText, pattern);
-                
+
             if (match.Success)
             {
                 // Parse (Convert) the matched value as double
@@ -239,13 +236,14 @@ void LoadConfig()
     void ShowCurrentOutput()
     {
         theOutput.text = outputs[currentIndex];
-       // UpdateMarkerPosition(); // Update marker position whenever the output changes
+        // Update marker position whenever the output changes
+        UpdateMarkerPosition();
     }
 
     // Show the next output
     void ShowNext()
     {
-        currentIndex = (currentIndex + 1) % outputs.Length; // division by o.l so the value stays in bounds. 
+        currentIndex = (currentIndex + 1) % outputs.Length;
         ShowCurrentOutput();
     }
 
