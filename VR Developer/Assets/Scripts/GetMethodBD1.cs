@@ -223,13 +223,13 @@ public class GetMethodBD1 : MonoBehaviour
                 double value = double.Parse(match.Value);
                 int intValue = (int)value;
 
-                Debug.Log("This is the value recieved", intValue);
+             //   Debug.Log("This is the value recieved", intValue);
 
                 // Check if the index is 2 (CO2) and the intValue exceeds the threshold
-                if (index == 2 && intValue > co2Limit)
+                if (index == 0 && intValue > co2Limit)
                 {
                     // If too many people, show the warning message in red
-                    string warningMessage = "<color=red> people in this room</color>";
+                    string warningMessage = "<color=red> Too many people in this room</color>";
                     outputs[index] = $"{label}{intValue}\n{warningMessage}";
                 }
                 else
