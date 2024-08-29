@@ -28,6 +28,7 @@ public class Config
     public PollingRates pollingRates;
     public string[] infoLines;
     public UrlSet[] urlSets;
+    public int co2Limit;  // Add this field to map the co2Limit from the config file
 }
 
 public class GetMethodBD1 : MonoBehaviour
@@ -48,6 +49,7 @@ public class GetMethodBD1 : MonoBehaviour
     UrlSet urls;
     string[] infoLines;
     int fetchInterval;
+    int co2Limit;  // Add this field to store the co2Limit from the config
 
     // Field to specify which set of URLs this instance should use
     public int urlSetIndex = 0;
@@ -130,9 +132,11 @@ public class GetMethodBD1 : MonoBehaviour
         fetchInterval = config.pollingRates.fetchInterval;
         infoLines = config.infoLines;
         urls = config.urlSets[urlSetIndex];
+        co2Limit = config.co2Limit;  // Store the co2Limit value
 
         Debug.Log($"Config loaded successfully. Fetch Interval: {fetchInterval}, URL Set Index: {urlSetIndex}");
         Debug.Log($"URL Set: Energy = {urls.Energy}, CO2 = {urls.CO2}, Temperature = {urls.Temperature}");
+        Debug.Log($"CO2 Limit: {co2Limit}");
     }
 
     // Coroutine to fetch data periodically
@@ -194,54 +198,55 @@ public class GetMethodBD1 : MonoBehaviour
 
     // Method to process each response
     void ProcessResponse(UnityWebRequest request, int index, string label)
-{
-    if (request.isNetworkError || request.isHttpError)
     {
-        // Display the error message in the UI text field
-        Debug.LogError($"Error in request: {request.error}");
-        outputs[index] = $"{request.error}";
-    }
-    else
-    {
-        // Display the downloaded text in the UI text field
-        string jsonAsText = request.downloadHandler.text;
-        Debug.Log($"Response for {label}: {jsonAsText}");
-
-        // Regular expression to match the last floating point number after all alphabets
-        string pattern = @"(?<=\D|^)\d+\.\d+(?!.*\d+\.\d+)";
-
-        // Match the pattern in the JSON text
-        Match match = Regex.Match(jsonAsText, pattern);
-
-        if (match.Success)
+        if (request.isNetworkError || request.isHttpError)
         {
-            // Parse (Convert) the matched value as double
-            double value = double.Parse(match.Value);
-            int intValue = (int)value;
-
-            // Check if the index is 2 and the intValue exceeds the threshold (replace XYZ with your threshold)
-            if (index == 2 && intValue > XYZ) // Replace XYZ with the desired threshold value
-            {
-                // If too many people, show the warning message in red
-                string warningMessage = "<color=red>Too many people in this room</color>";
-                outputs[index] = $"{label}{intValue}\n{warningMessage}";
-            }
-            else
-            {
-                // Display the value in the console and in the UI
-                Debug.Log(label + intValue);
-                outputs[index] = $"{label}{intValue}";
-            }
+            // Display the error message in the UI text field
+            Debug.LogError($"Error in request: {request.error}");
+            outputs[index] = $"{request.error}";
         }
         else
         {
-            // If no match found, display an error message
-            Debug.LogError("No numerical value found in the response.");
-            outputs[index] = "No numerical value found.";
+            // Display the downloaded text in the UI text field
+            string jsonAsText = request.downloadHandler.text;
+            Debug.Log($"Response for {label}: {jsonAsText}");
+
+            // Regular expression to match the last floating point number after all alphabets
+            string pattern = @"(?<=\D|^)\d+\.\d+(?!.*\d+\.\d+)";
+
+            // Match the pattern in the JSON text
+            Match match = Regex.Match(jsonAsText, pattern);
+
+            if (match.Success)
+            {
+                // Parse (Convert) the matched value as double
+                double value = double.Parse(match.Value);
+                int intValue = (int)value;
+
+                Debug.Log("This is the value recieved", intValue);
+
+                // Check if the index is 2 (CO2) and the intValue exceeds the threshold
+                if (index == 2 && intValue > co2Limit)
+                {
+                    // If too many people, show the warning message in red
+                    string warningMessage = "<color=red> people in this room</color>";
+                    outputs[index] = $"{label}{intValue}\n{warningMessage}";
+                }
+                else
+                {
+                    // Display the value in the console and in the UI
+                    Debug.Log(label + intValue);
+                    outputs[index] = $"{label}{intValue}";
+                }
+            }
+            else
+            {
+                // If no match found, display an error message
+                Debug.LogError("No numerical value found in the response.");
+                outputs[index] = "No numerical value found.";
+            }
         }
     }
-}
-
 
     // Show the current output based on the currentIndex
     void ShowCurrentOutput()
