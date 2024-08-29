@@ -194,43 +194,54 @@ public class GetMethodBD1 : MonoBehaviour
 
     // Method to process each response
     void ProcessResponse(UnityWebRequest request, int index, string label)
+{
+    if (request.isNetworkError || request.isHttpError)
     {
-        if (request.isNetworkError || request.isHttpError)
+        // Display the error message in the UI text field
+        Debug.LogError($"Error in request: {request.error}");
+        outputs[index] = $"{request.error}";
+    }
+    else
+    {
+        // Display the downloaded text in the UI text field
+        string jsonAsText = request.downloadHandler.text;
+        Debug.Log($"Response for {label}: {jsonAsText}");
+
+        // Regular expression to match the last floating point number after all alphabets
+        string pattern = @"(?<=\D|^)\d+\.\d+(?!.*\d+\.\d+)";
+
+        // Match the pattern in the JSON text
+        Match match = Regex.Match(jsonAsText, pattern);
+
+        if (match.Success)
         {
-            // Display the error message in the UI text field
-            Debug.LogError($"Error in request: {request.error}");
-            outputs[index] = $"{request.error}";
-        }
-        else
-        {
-            // Display the downloaded text in the UI text field
-            string jsonAsText = request.downloadHandler.text;
-            Debug.Log($"Response for {label}: {jsonAsText}");
+            // Parse (Convert) the matched value as double
+            double value = double.Parse(match.Value);
+            int intValue = (int)value;
 
-            // Regular expression to match the last floating point number after all alphabets
-            string pattern = @"(?<=\D|^)\d+\.\d+(?!.*\d+\.\d+)";
-
-            // Match the pattern in the JSON text
-            Match match = Regex.Match(jsonAsText, pattern);
-
-            if (match.Success)
+            // Check if the index is 2 and the intValue exceeds the threshold (replace XYZ with your threshold)
+            if (index == 2 && intValue > XYZ) // Replace XYZ with the desired threshold value
             {
-                // Parse (Convert) the matched value as double
-                double value = double.Parse(match.Value);
-                int intValue = (int)value;
-
+                // If too many people, show the warning message in red
+                string warningMessage = "<color=red>Too many people in this room</color>";
+                outputs[index] = $"{label}{intValue}\n{warningMessage}";
+            }
+            else
+            {
                 // Display the value in the console and in the UI
                 Debug.Log(label + intValue);
                 outputs[index] = $"{label}{intValue}";
             }
-            else
-            {
-                // If no match found, display an error message
-                Debug.LogError("No numerical value found in the response.");
-                outputs[index] = "No numerical value found.";
-            }
+        }
+        else
+        {
+            // If no match found, display an error message
+            Debug.LogError("No numerical value found in the response.");
+            outputs[index] = "No numerical value found.";
         }
     }
+}
+
 
     // Show the current output based on the currentIndex
     void ShowCurrentOutput()
