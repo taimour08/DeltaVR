@@ -22,6 +22,41 @@
       "CO2": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530455%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
       "Temperature": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu2%22%20WHERE%20%22host%22%20=%20%27110530455%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
       "Energy": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201"
+    },
+    {
+      "CO2": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530452%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Temperature": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu2%22%20WHERE%20%22host%22%20=%20%27110530452%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Energy": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201"
+    },
+    {
+      "CO2": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530455%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Temperature": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu2%22%20WHERE%20%22host%22%20=%20%27110530455%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Energy": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201"
+    },
+    {
+      "CO2": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530459%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Temperature": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu2%22%20WHERE%20%22host%22%20=%20%27110530459%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Energy": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201"
+    },
+    {
+      "CO2": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530460%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Temperature": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu2%22%20WHERE%20%22host%22%20=%20%27110530460%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Energy": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201"
+    },
+    {
+      "CO2": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530530%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Temperature": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu2%22%20WHERE%20%22host%22%20=%20%27110530530%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Energy": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201"
+    }, 
+    {
+      "CO2": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530532%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Temperature": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu2%22%20WHERE%20%22host%22%20=%20%27110530532%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Energy": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201"
+    }, 
+    {
+      "CO2": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22DP%22%20WHERE%20%22host%22%20=%20%27110530534%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Temperature": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22TSu2%22%20WHERE%20%22host%22%20=%20%27110530534%27%20ORDER%20BY%20time%20DESC%20LIMIT%201",
+      "Energy": "http://datareader:notthatsecret777@172.17.67.20:8086/query?db=delta&q=SELECT%20*%20FROM%20%22KogEN%22%20WHERE%20%22host%22%20=%20%2713318%27%20ORDER%20BY%20time%20DESC%20LIMIT%201"
     }
   ],
   "co2Limit": 20000,  
