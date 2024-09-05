@@ -1,11 +1,11 @@
-public class GetMethod2006 : GetMethodBD1
+public class GetMethod206 : GetMethodBD1
 {
     void Start()
     {
-        urlSetIndex = 6; 
-        outputName = "Output206";
-        nextName = "Next206";
-        prevName = "Prev206";
+        urlSetIndex = 2; 
+        outputName = "Output2006";
+        nextName = "Next2006";
+        prevName = "Prev2006";
         base.Start();
     }
 }
