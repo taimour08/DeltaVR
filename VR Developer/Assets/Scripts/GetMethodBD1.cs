@@ -59,11 +59,8 @@ public class GetMethodBD1 : MonoBehaviour
     {
         Debug.Log("Start method called.");
 
-        // Load the configuration
-        LoadConfig();
-
-        // Initialize the outputs array based on the number of infoLines
-        outputs = new string[infoLines.Length];
+        // Load the configuration using coroutine
+        StartCoroutine(LoadConfig());
 
         // Find and get the UI InputField component named "TheOutput"
         theOutput = GameObject.Find(outputName).GetComponent<TMP_InputField>();
@@ -77,67 +74,79 @@ public class GetMethodBD1 : MonoBehaviour
 
         // Log to ensure the input field and buttons are correctly assigned
         Debug.Log($"TheOutput: {theOutput != null}, NextButton: {nextButton != null}, PrevButton: {prevButton != null}");
-
-        // Start the coroutine to fetch data periodically
-        StartCoroutine(FetchDataPeriodically());
-
-        // Update marker position initially
-        UpdateMarkerPosition();
     }
 
-
-    // LoadConfig method to load the config file and initialize configuration fields
-    void LoadConfig()
+    // Coroutine to load config file from StreamingAssets
+    IEnumerator LoadConfig()
     {
-        // Load the JSON file from the StreamingAssets folder
-        string path = Path.Combine(Application.streamingAssetsPath, "GlobalConfig.json");
+        string filePath = Path.Combine(Application.streamingAssetsPath, "GlobalConfig.json");
 
-        if (!File.Exists(path))
+        // Use UnityWebRequest to fetch the file, as direct access might not work on Android
+        if (filePath.Contains("://") || filePath.Contains(":///"))
         {
-            Debug.LogError($"GlobalConfig.json file not found at path: {path}");
-            return;
+            filePath = filePath;
+        }
+        else
+        {
+            filePath = "file://" + filePath;
         }
 
-        string jsonString = File.ReadAllText(path);
+        UnityWebRequest request = UnityWebRequest.Get(filePath);
+        yield return request.SendWebRequest();
 
-        if (string.IsNullOrEmpty(jsonString))
+        if (request.isNetworkError || request.isHttpError)
         {
-            Debug.LogError("GlobalConfig.json file is empty or could not be read.");
-            return;
+            Debug.LogError("Error loading GlobalConfig.json: " + request.error);
         }
-
-        // Parse the JSON data
-        config = JsonUtility.FromJson<Config>(jsonString);
-
-        if (config == null)
+        else
         {
-            Debug.LogError("Failed to parse GlobalConfig.json file.");
-            return;
+            string jsonString = request.downloadHandler.text;
+
+            if (string.IsNullOrEmpty(jsonString))
+            {
+                Debug.LogError("GlobalConfig.json file is empty or could not be read.");
+            }
+            else
+            {
+                // Parse the JSON data
+                config = JsonUtility.FromJson<Config>(jsonString);
+
+                if (config == null)
+                {
+                    Debug.LogError("Failed to parse GlobalConfig.json file.");
+                }
+                else
+                {
+                    Debug.Log($"Parsed Config: {JsonUtility.ToJson(config)}");
+
+                    if (config.urlSets == null || config.urlSets.Length == 0)
+                    {
+                        Debug.LogError("No URL sets found in GlobalConfig.json file.");
+                    }
+                    else if (urlSetIndex < 0 || urlSetIndex >= config.urlSets.Length)
+                    {
+                        Debug.LogError($"Invalid urlSetIndex: {urlSetIndex}. It should be between 0 and {config.urlSets.Length - 1}");
+                    }
+                    else
+                    {
+                        // Extract configuration values
+                        fetchInterval = config.pollingRates.fetchInterval;
+                        infoLines = config.infoLines;
+                        urls = config.urlSets[urlSetIndex];
+                        co2Limit = config.co2Limit;  // Store the co2Limit value
+
+                        Debug.Log($"Config loaded successfully. Fetch Interval: {fetchInterval}, URL Set Index: {urlSetIndex}");
+                        Debug.Log($"URL Set: Energy = {urls.Energy}, CO2 = {urls.CO2}, Temperature = {urls.Temperature}");
+                        Debug.Log($"CO2 Limit: {co2Limit}");
+
+                        // Initialize outputs array and start fetching data periodically
+                        outputs = new string[infoLines.Length];
+                        StartCoroutine(FetchDataPeriodically());
+                        UpdateMarkerPosition();
+                    }
+                }
+            }
         }
-
-        Debug.Log($"Parsed Config: {JsonUtility.ToJson(config)}");
-
-        if (config.urlSets == null || config.urlSets.Length == 0)
-        {
-            Debug.LogError("No URL sets found in GlobalConfig.json file.");
-            return;
-        }
-
-        if (urlSetIndex < 0 || urlSetIndex >= config.urlSets.Length)
-        {
-            Debug.LogError($"Invalid urlSetIndex: {urlSetIndex}. It should be between 0 and {config.urlSets.Length - 1}");
-            return;
-        }
-
-        // Extract configuration values
-        fetchInterval = config.pollingRates.fetchInterval;
-        infoLines = config.infoLines;
-        urls = config.urlSets[urlSetIndex];
-        co2Limit = config.co2Limit;  // Store the co2Limit value
-
-        Debug.Log($"Config loaded successfully. Fetch Interval: {fetchInterval}, URL Set Index: {urlSetIndex}");
-        Debug.Log($"URL Set: Energy = {urls.Energy}, CO2 = {urls.CO2}, Temperature = {urls.Temperature}");
-        Debug.Log($"CO2 Limit: {co2Limit}");
     }
 
     // Coroutine to fetch data periodically
@@ -223,8 +232,6 @@ public class GetMethodBD1 : MonoBehaviour
                 // Parse (Convert) the matched value as double
                 double value = double.Parse(match.Value);
                 int intValue = (int)value;
-
-             //   Debug.Log("This is the value recieved", intValue);
 
                 // Check if the index is 2 (CO2) and the intValue exceeds the threshold
                 if (index == 0 && intValue > co2Limit)
