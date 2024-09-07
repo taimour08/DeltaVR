@@ -3275,7 +3275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: {fileID: 0}
-  outputName: Output2018
+  outputName: TheOutput
   nextName: Next
   prevName: Prev
   urlSetIndex: 0
@@ -7325,7 +7325,7 @@ Transform:
   m_GameObject: {fileID: 369958065}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00256591, y: -0.6598349, z: 0.028766723, w: -0.7508554}
-  m_LocalPosition: {x: -60.46, y: 14.99, z: -286.62}
+  m_LocalPosition: {x: -60.47, y: 14.71, z: -286.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13208,7 +13208,7 @@ GameObject:
   - component: {fileID: 720076170}
   - component: {fileID: 720076169}
   m_Layer: 5
-  m_Name: Schedule_Output1
+  m_Name: Output2006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15484,9 +15484,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: {fileID: 0}
-  outputName: Output2024
-  nextName: Next2024
-  prevName: Prev2024
+  outputName: TheOutput
+  nextName: Next
+  prevName: Prev
   urlSetIndex: 0
 --- !u!1 &856337602
 GameObject:
@@ -16399,8 +16399,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943189489}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.011336835, y: 0.68119246, z: -0.0028644318, w: -0.73201096}
-  m_LocalPosition: {x: -36.22, y: 15.62, z: -271.48}
+  m_LocalRotation: {x: 0.0062934863, y: 0.67196226, z: -0.03460703, w: -0.73974967}
+  m_LocalPosition: {x: -36.41, y: 15.65, z: -274.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16408,7 +16408,7 @@ Transform:
   - {fileID: 135461843}
   - {fileID: 1274154444}
   m_Father: {fileID: 1728598226}
-  m_LocalEulerAnglesHint: {x: 1.175, y: -445.888, z: -0.645}
+  m_LocalEulerAnglesHint: {x: 2.132, y: -444.438, z: 3.423}
 --- !u!1 &948785792
 GameObject:
   m_ObjectHideFlags: 0
@@ -16465,7 +16465,7 @@ Transform:
   m_GameObject: {fileID: 955761292}
   serializedVersion: 2
   m_LocalRotation: {x: 0.020129623, y: -0.7003022, z: -0.012293563, w: 0.7134568}
-  m_LocalPosition: {x: -46.06, y: 15.5, z: -284.87}
+  m_LocalPosition: {x: -46.06, y: 15.48, z: -284.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19509,9 +19509,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: {fileID: 0}
-  outputName: Output2022
-  nextName: Next2022
-  prevName: Prev2022
+  outputName: TheOutput
+  nextName: Next
+  prevName: Prev
   urlSetIndex: 0
 --- !u!1 &1175298033
 GameObject:
@@ -20625,7 +20625,7 @@ Transform:
   m_GameObject: {fileID: 1236677228}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7, y: 18.3, z: -297.2}
+  m_LocalPosition: {x: -7.52, y: 18.3, z: -297.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22104,7 +22104,7 @@ GameObject:
   - component: {fileID: 1324546614}
   - component: {fileID: 1324546613}
   m_Layer: 5
-  m_Name: TheOutput203
+  m_Name: Output203
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25138,7 +25138,7 @@ Transform:
   m_GameObject: {fileID: 1547657926}
   serializedVersion: 2
   m_LocalRotation: {x: -0.021715054, y: 0.9993107, z: -0.02767148, w: 0.011872433}
-  m_LocalPosition: {x: -59.99, y: 15.57, z: -286.03}
+  m_LocalPosition: {x: -59.989, y: 15.561, z: -286.038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27131,13 +27131,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693913818}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.0017807847, y: -0.46136063, z: 0.0009260305, w: 0.8872104}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1735802101}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.23, y: -54.95, z: 0}
 --- !u!114 &1693913820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28136,7 +28136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735802100}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.0012393872, y: 0.21644267, z: -0.0026344743, w: 0.97629094}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -28147,7 +28147,7 @@ Transform:
   - {fileID: 1978819661}
   - {fileID: 38967509}
   m_Father: {fileID: 1836622550}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.204, y: 25, z: -0.264}
 --- !u!1 &1736613584
 GameObject:
   m_ObjectHideFlags: 0
@@ -28286,9 +28286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: {fileID: 0}
-  outputName: Output2006
-  nextName: Next2006
-  prevName: Prev2006
+  outputName: TheOutput
+  nextName: Next
+  prevName: Prev
   urlSetIndex: 0
 --- !u!1 &1738014379
 GameObject:
@@ -30257,6 +30257,7 @@ GameObject:
   - component: {fileID: 1836622551}
   - component: {fileID: 1836622553}
   - component: {fileID: 1836622555}
+  - component: {fileID: 1836622556}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -30289,14 +30290,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836622548}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.4500205, z: 0, w: 0.8930182}
-  m_LocalPosition: {x: -40.35, y: -2.4, z: 11.6}
+  m_LocalRotation: {x: -0, y: 0.50132215, z: -0, w: 0.8652607}
+  m_LocalPosition: {x: -50.59, y: -2.23, z: 7.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1735802101}
   m_Father: {fileID: 1236677229}
-  m_LocalEulerAnglesHint: {x: 0, y: 53.49, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 60.175, z: 0}
 --- !u!114 &1836622551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30398,13 +30399,56 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836622548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01f69dc1cb084aa42b2f2f8cd87bc770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 1836622552}
   m_DelayTime: 0
+--- !u!114 &1836622556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836622548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf296fc962d7184ab14ad1841598d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_System: {fileID: 1836622552}
+  m_MoveSpeed: 4
+  m_EnableStrafe: 1
+  m_EnableFly: 0
+  m_UseGravity: 1
+  m_GravityApplicationMode: 0
+  m_ForwardSource: {fileID: 1693913819}
+  m_LeftHandMoveAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Hand Move
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: c8b9f2a5-49f8-4d8c-bdef-34f754852894
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  m_RightHandMoveAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Right Hand Move
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 7834227c-e709-403a-9874-afc95ccc9515
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!4 &1837895482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7705161579504827486, guid: fab32eb33353a774bb7a4fa243c79171, type: 3}
@@ -31882,7 +31926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: {fileID: 0}
-  outputName: TheOutput203
+  outputName: Output203
   nextName: Next203
   prevName: Prev203
   urlSetIndex: 0
@@ -32307,10 +32351,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Marker: {fileID: 0}
-  outputName: TheOutput2005
-  nextName: Next2005
-  prevName: Prev2005
-  urlSetIndex: 2
+  outputName: TheOutput
+  nextName: Next
+  prevName: Prev
+  urlSetIndex: 0
 --- !u!1 &1955253889
 GameObject:
   m_ObjectHideFlags: 0
