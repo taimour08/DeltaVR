@@ -87,38 +87,34 @@ public class GetMethodWeather : MonoBehaviour
         outputArea = GameObject.Find("OutputArea").GetComponent<TMP_InputField>();
         GameObject.Find("GetButton").GetComponent<Button>().onClick.AddListener(GetData);
 
-        LoadConfig();
+        StartCoroutine(LoadConfig());
     }
 
-    void LoadConfig()
+    // Load config using UnityWebRequest to dynamically fetch the configuration during runtime
+    IEnumerator LoadConfig()
     {
-        string path = Path.Combine(Application.dataPath, "GlobalConfig.json");
+        string configPath = Path.Combine(Application.streamingAssetsPath, "GlobalConfig.json");
+        
+        UnityWebRequest configRequest = UnityWebRequest.Get(configPath);
+        yield return configRequest.SendWebRequest();
 
-        if (!File.Exists(path))
+        if (configRequest.isNetworkError || configRequest.isHttpError)
         {
-            Debug.LogError($"GlobalConfig.json file not found at path: {path}");
-            return;
+            Debug.LogError($"Failed to load GlobalConfig.json: {configRequest.error}");
+            yield break;
         }
 
-        string jsonString = File.ReadAllText(path);
-
-        if (string.IsNullOrEmpty(jsonString))
-        {
-            Debug.LogError("GlobalConfig.json file is empty or could not be read.");
-            return;
-        }
-
-        Debug.Log($"JSON String: {jsonString}");
-
+        string jsonString = configRequest.downloadHandler.text;
         OConfig config = JsonUtility.FromJson<OConfig>(jsonString);
 
         if (config == null || config.openWeather == null || string.IsNullOrEmpty(config.openWeather.url))
         {
-            Debug.LogError("Failed to parse GlobalConfig.json file or missing openWeather URL.");
-            return;
+            Debug.LogError("Failed to parse GlobalConfig.json file or missing OpenWeather URL.");
+            yield break;
         }
 
         weatherUrl = config.openWeather.url;
+        Debug.Log($"Loaded Weather URL: {weatherUrl}");
     }
 
     void GetData() => StartCoroutine(GetData_Coroutine());
@@ -127,12 +123,14 @@ public class GetMethodWeather : MonoBehaviour
     {
         outputArea.text = "⚡ Loading...";
 
+        // Ensure the weatherUrl is ready
         if (string.IsNullOrEmpty(weatherUrl))
         {
-            outputArea.text = "Weather URL not configured.";
+            outputArea.text = "Weather URL not configured. Please check the GlobalConfig.json.";
             yield break;
         }
 
+        // Make the weather request
         using (UnityWebRequest request = UnityWebRequest.Get(weatherUrl))
         {
             yield return request.SendWebRequest();
@@ -144,7 +142,7 @@ public class GetMethodWeather : MonoBehaviour
             else
             {
                 string jsonResponse = request.downloadHandler.text;
-                WeatherData weatherData = JsonUtility.FromJson<WeatherData>(jsonResponse);
+                WeatherData weatherData = JsonUtility.FromJson<WeatherData>(jsonResponse); // catch data in json format the built class 
 
                 string weatherInfo = $"Weather: {weatherData.weather[0].description}\n" +
                                      $"Temp: {weatherData.main.temp} K\n" +
@@ -161,19 +159,20 @@ public class GetMethodWeather : MonoBehaviour
 
                 outputArea.text = weatherInfo;
 
-                Vector3 position = new Vector3(-64.167f, 15.883f, -293.741f);
+                Vector3 position = new Vector3(-64.30f, 15.845f, -293.5f); // Position of the space on the box 
+                Vector3 rotation = new Vector3(1.955f, 82.571f, -180.2f); // Position of the space on the box
 
                 if (weatherData.weather[0].description.ToLower().Contains("rain"))
                 {
-                    ShowWeatherObject(rainObject, position);
+                    ShowWeatherObject(rainObject, position, rotation);
                 }
                 else if (weatherData.weather[0].description.ToLower().Contains("cloud"))
                 {
-                    ShowWeatherObject(snowObject, position);
+                    ShowWeatherObject(snowObject, position, rotation);
                 }
                 else if (weatherData.weather[0].description.ToLower().Contains("sun"))
                 {
-                    ShowWeatherObject(sunObject, position);
+                    ShowWeatherObject(sunObject, position, rotation);
                 }
                 else
                 {
@@ -183,11 +182,16 @@ public class GetMethodWeather : MonoBehaviour
         }
     }
 
-    void ShowWeatherObject(GameObject weatherObject, Vector3 position)
+    void ShowWeatherObject(GameObject weatherObject, Vector3 position, Vector3 rotationEuler)
     {
         HideAllWeatherObjects();
         weatherObject.SetActive(true);
         weatherObject.transform.position = position;
+
+          // Convert the Euler angles to a Quaternion
+        //Quaternion rotation = Quaternion.Euler(rotationEuler);
+        //weatherObject.transform.rotation = rotation;
+
     }
 
     void HideAllWeatherObjects()

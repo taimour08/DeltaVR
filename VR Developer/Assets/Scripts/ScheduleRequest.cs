@@ -10,7 +10,7 @@ public class GlobalConfig
     public PollingRates pollingRates;
     public string[] infoLines;
   //  public UrlSet[] urlSets;
-    public OpenWeather openWeather;
+   // public OpenWeather openWeather;
     public Schedule schedule;
 
     public static GlobalConfig LoadConfig(string filePath)

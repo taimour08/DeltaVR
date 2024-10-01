@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 [Serializable]
 public class PollingRates
 {
-    public int fetchInterval;
+       public int fetchInterval;
 }
 
 [Serializable]
@@ -123,7 +123,7 @@ public class GetMethodBD1 : MonoBehaviour
                     {
                         Debug.LogError("No URL sets found in GlobalConfig.json file.");
                     }
-                    else if (urlSetIndex < 0 || urlSetIndex >= config.urlSets.Length)
+                    else if (urlSetIndex < 0 || urlSetIndex >= 7)
                     {
                         Debug.LogError($"Invalid urlSetIndex: {urlSetIndex}. It should be between 0 and {config.urlSets.Length - 1}");
                     }
